@@ -1,0 +1,124 @@
+Added Component: Designator=A1(XL4050_PCB)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C1(Ceramic 1206 - duplicate)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C2(Ceramic 1206 - duplicate)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C3(CAP 50-35 5õ11)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C5(Ceramic 1206 - duplicate)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C6(Ceramic 1206 - duplicate)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C7(Ceramic 1206 - duplicate)
+Add component. Clean all parameters for all variants
+Added Component: Designator=D2(DRV8313 board)
+Add component. Clean all parameters for all variants
+Added Component: Designator=Motor1(Fhase out)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R1(Resistor 1206)
+Add component. Clean all parameters for all variants
+Added Component: Designator=X1(STM32F4Discovery_P)
+Add component. Clean all parameters for all variants
+Added Component: Designator=X2(STM32F4Discovery_P)
+Add component. Clean all parameters for all variants
+Added Component: Designator=X3(Signal port)
+Add component. Clean all parameters for all variants
+Added Component: Designator=X4(Power input)
+Add component. Clean all parameters for all variants
+Added Component: Designator=X5(AS5048A_input)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=+5V Pin=X2-4
+Added Pin To Net: NetName=+5V Pin=X5-1
+Added Net: Name=+5V
+Added Pin To Net: NetName=12V Pin=C2-2
+Added Pin To Net: NetName=12V Pin=C3-1
+Added Pin To Net: NetName=12V Pin=C5-1
+Added Pin To Net: NetName=12V Pin=C6-1
+Added Pin To Net: NetName=12V Pin=D2-4
+Added Pin To Net: NetName=12V Pin=D2-11
+Added Net: Name=12V
+Added Pin To Net: NetName=CS Pin=X2-46
+Added Pin To Net: NetName=CS Pin=X5-3
+Added Net: Name=CS
+Added Pin To Net: NetName=EN1 Pin=D2-26
+Added Pin To Net: NetName=EN1 Pin=X1-11
+Added Net: Name=EN1
+Added Pin To Net: NetName=EN2 Pin=D2-24
+Added Pin To Net: NetName=EN2 Pin=X1-14
+Added Net: Name=EN2
+Added Pin To Net: NetName=EN3 Pin=D2-22
+Added Pin To Net: NetName=EN3 Pin=X1-13
+Added Net: Name=EN3
+Added Pin To Net: NetName=GND Pin=C3-2
+Added Pin To Net: NetName=GND Pin=C5-2
+Added Pin To Net: NetName=GND Pin=C6-2
+Added Pin To Net: NetName=GND Pin=C7-2
+Added Pin To Net: NetName=GND Pin=D2-6
+Added Pin To Net: NetName=GND Pin=D2-7
+Added Pin To Net: NetName=GND Pin=D2-10
+Added Pin To Net: NetName=GND Pin=D2-12
+Added Pin To Net: NetName=GND Pin=D2-13
+Added Pin To Net: NetName=GND Pin=D2-14
+Added Pin To Net: NetName=GND Pin=D2-19
+Added Pin To Net: NetName=GND Pin=D2-20
+Added Pin To Net: NetName=GND Pin=D2-28
+Added Pin To Net: NetName=GND Pin=X2-50
+Added Pin To Net: NetName=GND Pin=X5-2
+Added Net: Name=GND
+Added Pin To Net: NetName=IN1 Pin=D2-27
+Added Pin To Net: NetName=IN1 Pin=X1-44
+Added Net: Name=IN1
+Added Pin To Net: NetName=IN2 Pin=D2-25
+Added Pin To Net: NetName=IN2 Pin=X1-45
+Added Net: Name=IN2
+Added Pin To Net: NetName=IN3 Pin=D2-23
+Added Pin To Net: NetName=IN3 Pin=X1-46
+Added Net: Name=IN3
+Added Pin To Net: NetName=MISO Pin=X2-38
+Added Pin To Net: NetName=MISO Pin=X5-5
+Added Net: Name=MISO
+Added Pin To Net: NetName=MOSI Pin=X2-35
+Added Pin To Net: NetName=MOSI Pin=X5-6
+Added Net: Name=MOSI
+Added Pin To Net: NetName=NetA1_1 Pin=X4-1
+Added Net: Name=NetA1_1
+Added Pin To Net: NetName=NetA1_2 Pin=X4-2
+Added Net: Name=NetA1_2
+Added Pin To Net: NetName=NetC1_1 Pin=C1-1
+Added Pin To Net: NetName=NetC1_1 Pin=D2-1
+Added Net: Name=NetC1_1
+Added Pin To Net: NetName=NetC1_2 Pin=C1-2
+Added Pin To Net: NetName=NetC1_2 Pin=D2-2
+Added Net: Name=NetC1_2
+Added Pin To Net: NetName=NetC2_1 Pin=C2-1
+Added Pin To Net: NetName=NetC2_1 Pin=D2-3
+Added Net: Name=NetC2_1
+Added Pin To Net: NetName=nFAULT Pin=D2-18
+Added Pin To Net: NetName=nFAULT Pin=R1-2
+Added Pin To Net: NetName=nFAULT Pin=X3-1
+Added Net: Name=nFAULT
+Added Pin To Net: NetName=nReset Pin=D2-16
+Added Pin To Net: NetName=nReset Pin=X1-15
+Added Net: Name=nReset
+Added Pin To Net: NetName=nSleep Pin=D2-17
+Added Pin To Net: NetName=nSleep Pin=X1-16
+Added Net: Name=nSleep
+Added Pin To Net: NetName=OUT1 Pin=D2-5
+Added Pin To Net: NetName=OUT1 Pin=Motor1-1
+Added Net: Name=OUT1
+Added Pin To Net: NetName=OUT2 Pin=D2-8
+Added Pin To Net: NetName=OUT2 Pin=Motor1-2
+Added Net: Name=OUT2
+Added Pin To Net: NetName=OUT3 Pin=D2-9
+Added Pin To Net: NetName=OUT3 Pin=Motor1-3
+Added Net: Name=OUT3
+Added Pin To Net: NetName=SCLK Pin=X2-37
+Added Pin To Net: NetName=SCLK Pin=X5-4
+Added Net: Name=SCLK
+Added Pin To Net: NetName=V3P3 Pin=C7-1
+Added Pin To Net: NetName=V3P3 Pin=D2-15
+Added Pin To Net: NetName=V3P3 Pin=R1-1
+Added Net: Name=V3P3
+Added Class: Name=Sheet1
+Added Room: Name=Sheet1

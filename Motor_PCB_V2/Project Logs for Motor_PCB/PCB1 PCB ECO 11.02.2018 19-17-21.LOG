@@ -1,0 +1,5 @@
+Added Pin To Net: NetName=GND Pin=A1-2
+Added Pin To Net: NetName=GND Pin=X4-2
+Change Net Name : Old Net Name=NetA1_1 New Net Name=8-36V
+Added Member To Class: ClassName=Sheet1 Member=Component D2 *
+Added Room: Name=Sheet1
