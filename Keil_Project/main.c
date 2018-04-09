@@ -12,13 +12,13 @@
 
 //#include "tm_stm32f4_delay.h"
 	
-float angle, angle_error, angle_test;
+float angle, angle_error, angle_test, angle1;
 float des_val,des_val1;
-uint32_t t1, t2, t3, t4, dt1, dt22, p;
+uint32_t t1, t2, t3, t4, dt1, dt22, p, timex, t1_IMU, t2_IMU, dt_IMU;
 
 float voltage, current;
 
-
+float sin_x, cos_x, tv_g, t_g, t_d;
 
 // moving average filter variables
 
@@ -36,13 +36,13 @@ uint8_t filled_ADC;
 	//moving average Roll
 	
 	uint8_t filled_Roll;
-	uint16_t i_Roll; // counter for filling in
+	uint32_t i_Roll; // counter for filling in
 	float data_Roll;
-	float arr_Roll[window_Roll],  Roll_average, a_i_Roll; // variables for first order moving average
-	uint16_t k_Roll; // counter
+	uint32_t arr_Roll[window_Roll],  Roll_average, a_i_Roll; // variables for first order moving average
+	uint32_t k_Roll; // counter
 	
 	uint8_t flag_Roll;
-  float sum_Roll;
+  uint32_t sum_Roll;
 	
 	
 	
@@ -62,7 +62,7 @@ uint16_t USART_test_rec;
 uint8_t IMU_data;
 
 float Pitch, Roll, Yaw;
-float Roll_raw, roll_sine, roll_cos;
+float Roll_raw, roll_sine, roll_cos, Roll_raw_test, roll_sine_test, roll_cos_test, Roll_test;
 
 int main(void)
 	
@@ -84,7 +84,7 @@ int main(void)
 	
 	PWM_ENx_ini();
 	port_init();
-	//ADC_initt();
+	ADC_initt();
 	Set_nRes_nSleep();
 	GPIO_SetBits(GPIOA, GPIO_Pin_1|GPIO_Pin_2|GPIO_Pin_3); // EN1,2,3 to 1 enable all half-bridges
 	FOC_InitPosition();
@@ -107,21 +107,34 @@ char str[30];
 sprintf(str, "Hello world");
 
 
+timex = TIM5->CNT; //init delay getting angle
+t1_IMU = timex; //init measure time IMU
+
 	while(1)
 	{
 		
 				t1 = TIM5->CNT;
 		
+		
 		if(IMU_data_ready)
 		{
-			
+			t2_IMU = TIM5->CNT;
+			dt_IMU = t2_IMU-t1_IMU;
+			t1_IMU = t2_IMU;
 			Roll_raw = ((float)((IMU_Recieve_Buf[1]<<8)|IMU_Recieve_Buf[0]))/32768*PI;
+			//Roll_raw= ((float)((IMU_Recieve_Buf[1]<<8)))/32768*PI;
 			//Pitch = ((float)((IMU_Recieve_Buf[3]<<8)|IMU_Recieve_Buf[2]))/32768*180;
 			//Yaw = ((float)((IMU_Recieve_Buf[5]<<8)|IMU_Recieve_Buf[4]))/32768*180;
+			
+			
+					
+			
 			
 			  roll_sine = arm_sin_f32(Roll_raw); 
 				roll_cos = arm_cos_f32(Roll_raw);
 			  Roll = atan2(roll_sine, roll_cos)*57.295779513082320876798154814105 ;
+			
+			/*
 			
 			if(!filled_Roll)
 		{
@@ -158,19 +171,81 @@ sprintf(str, "Hello world");
 			
 			
 		}
-		
+		*/
 			
 			IMU_data_ready=0;
 		}
+		
 		
 	//	myDelay_ms(500);
 		//USATRT2_SendStr(str);
 	//	USART_SendData(USART2,0xFF);
 	//	USART_ReceiveData(USART2);
 		
+			
+			/*
+			if(IMU_data_ready)
+		{
+			t2_IMU = TIM5->CNT;
+			dt_IMU = t2_IMU-t1_IMU;
+			t1_IMU = t2_IMU;
+			Roll_raw_test = ((float)((IMU_Recieve_Buf[1]<<8)|IMU_Recieve_Buf[0]))/32768*PI;
+			//Pitch = ((float)((IMU_Recieve_Buf[3]<<8)|IMU_Recieve_Buf[2]))/32768*180;
+			//Yaw = ((float)((IMU_Recieve_Buf[5]<<8)|IMU_Recieve_Buf[4]))/32768*180;
+			
+			  roll_sine_test = arm_sin_f32(Roll_raw_test); 
+				roll_cos_test = arm_cos_f32(Roll_raw_test);
+		
+			  Roll_test = atan2(roll_sine, roll_cos)*57.295779513082320876798154814105 ;
+			
+			if(!filled_Roll)
+		{
+			
+			
+				arr_Roll[i_Roll] = IMU_Recieve_Buf[0] ;
+				sum_Roll = sum_Roll + arr_Roll[i_Roll];
+				if(i_Roll < window_Roll - 1) 
+				{
+					i_Roll++;
+				}
+				else
+				{
+					Roll_average  = (uint16_t)(sum_Roll / (uint32_t)window_Roll) ; // out of the filter
+					filled_Roll = 1;
+					k_Roll=0;
+					
+				}
+			 
+		}
+		
+		// 2) start filtering
+		
+		else
+		{
+			a_i_Roll = IMU_Recieve_Buf[0] ;
+			
+		//	flag_ADC = 1;
+			sum_Roll = sum_Roll - arr_Roll[k_Roll] + a_i_Roll;
+			Roll_average  = (uint16_t)(sum_Roll / (uint32_t)window_Roll) ; // out of the filter
+			arr_Roll[k_Roll] = a_i_Roll; // substitute thrown out value with new value for cycling
+			k_Roll++;
+			if(k_Roll >= window_Roll) k_Roll=0; // array loop
+			
+			
+			Roll_raw = ((float)((IMU_Recieve_Buf[1]<<8)|(uint16_t)Roll_average))/32768*PI;
+			roll_sine = arm_sin_f32(Roll_raw); 
+			roll_cos = arm_cos_f32(Roll_raw);
+			Roll = atan2(roll_sine, roll_cos)*57.295779513082320876798154814105 ;
+			
+		}
 		
 		
 		
+			
+			IMU_data_ready=0;
+		}
+		
+		*/
 		
 		
 	
@@ -178,19 +253,30 @@ sprintf(str, "Hello world");
 	
 	
 	angle = CQ_average_angle();//ThirdOrder_average();//average_angle();//	angle = get_angle();
+   
 
-				
-	//des_val = (float)ADC_average*360/4095;
+
+		if(((TIM5->CNT) - timex) > 10*1000) // get discrete angle from encoder
+		{
+			angle1 = get_angle();
+			//des_val = (float)ADC_average*360/4095 + 100;
+			timex = TIM5->CNT;
+		}
 		
-	angle_error = des_val - angle;
+		
+				
+	des_val = (float)ADC_average*360/4095+100-360; // des val with Roll
+	//	des_val = (float)ADC_average*360/4095 + 100; // des val with Encoder
+		
+  //angle_error = des_val - angle;
+	//angle_error = des_val + Roll;
 	
-	
-	
+	angle_error =  Roll;
 	
 	//---------------------------------------------------
 
-	FOC(angle, Roll, 0.1,   0,  0.1,  dt1)	;
-	
+	//FOC(angle, Roll, 0.1,   0,  0.1,  dt1)	;
+	FOC(angle, angle_error, 0.2,   0,  0.2,  dt1)	;
 	//=----------------------------------------------
 	
 	
@@ -199,8 +285,8 @@ sprintf(str, "Hello world");
 	
 	
 //	sinus_control(des_val);
-	//sinus_control_V2(Roll_average);
-		
+	//sinus_control_V2(angle_error);
+//	 combined_control_V3(angle, angle_error, 0.2 , 0, 0, 0);
 		t2 = TIM5->CNT;
 	  dt1 = t2 - t1;
 	

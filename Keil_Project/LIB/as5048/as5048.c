@@ -453,8 +453,8 @@ void encoder_as5048_SPI3(void)
 			for (int i=0; i < window; i++ )
 			 {
 				arr_CQ[i] = get_angle()*0.01745329251994329576923690768489 ;//Pi/180; // translating into radians;
-				sine_arr[i] = arm_sin_f32(arr[i]); 
-				cos_arr[i] = arm_cos_f32(arr[i]);
+				sine_arr[i] = arm_sin_f32(arr_CQ[i]); 
+				cos_arr[i] = arm_cos_f32(arr_CQ[i]);
 				sine_sum = sine_sum + sine_arr[i];
 				cos_sum = cos_sum + cos_arr[i];
 			 }

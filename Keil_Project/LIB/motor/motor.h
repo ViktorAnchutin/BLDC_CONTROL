@@ -56,7 +56,7 @@ void FOC(float angle, float error_angle, float K_p, float K_d, float K_I, uint32
 
 void sinus_control(float des_val_);
 void sinus_control_V2(float err);
-
+void combined_control_V3(float angle, float error_angle, float K_p, float K_d, float K_I, uint32_t dt);
 
 
 

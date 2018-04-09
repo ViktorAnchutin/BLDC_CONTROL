@@ -156,114 +156,109 @@
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>dt1,0x0A</ItemText>
+          <ItemText>angle_init</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>dt2,0x0A</ItemText>
+          <ItemText>theta</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
           <WinNumber>1</WinNumber>
-          <ItemText>a_i</ItemText>
+          <ItemText>thetta_vector</ItemText>
         </Ww>
         <Ww>
           <count>4</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Vc_1</ItemText>
+          <ItemText>error_angle</ItemText>
         </Ww>
         <Ww>
           <count>5</count>
           <WinNumber>1</WinNumber>
-          <ItemText>sine_sum</ItemText>
+          <ItemText>step</ItemText>
         </Ww>
         <Ww>
           <count>6</count>
           <WinNumber>1</WinNumber>
-          <ItemText>filled_CQ</ItemText>
+          <ItemText>Roll</ItemText>
         </Ww>
         <Ww>
           <count>7</count>
           <WinNumber>1</WinNumber>
-          <ItemText>a_i_CQ</ItemText>
+          <ItemText>angle_error</ItemText>
         </Ww>
         <Ww>
           <count>8</count>
           <WinNumber>1</WinNumber>
-          <ItemText>sine_i</ItemText>
+          <ItemText>tv_g</ItemText>
         </Ww>
         <Ww>
           <count>9</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Vq</ItemText>
+          <ItemText>t_g</ItemText>
+        </Ww>
+        <Ww>
+          <count>10</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>t_d</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>
         <Ww>
           <count>0</count>
           <WinNumber>2</WinNumber>
-          <ItemText>Pitch,0x10</ItemText>
+          <ItemText>Roll</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>2</WinNumber>
-          <ItemText>Roll</ItemText>
+          <ItemText>des_val</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>2</WinNumber>
-          <ItemText>Yaw</ItemText>
+          <ItemText>angle_error</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
           <WinNumber>2</WinNumber>
-          <ItemText>IMU_data,0x0A</ItemText>
+          <ItemText>i_Roll,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>4</count>
           <WinNumber>2</WinNumber>
-          <ItemText>IMU_count,0x0A</ItemText>
+          <ItemText>IMU_Recieve_Buf[0],0x0A</ItemText>
         </Ww>
         <Ww>
           <count>5</count>
           <WinNumber>2</WinNumber>
-          <ItemText>IMU_data_ready,0x0A</ItemText>
+          <ItemText>Roll_average,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>6</count>
           <WinNumber>2</WinNumber>
-          <ItemText>USART_test_rec</ItemText>
+          <ItemText>IMU_Recieve_Buf[1],0x0A</ItemText>
         </Ww>
         <Ww>
           <count>7</count>
           <WinNumber>2</WinNumber>
-          <ItemText>IMU_Recieve_Buf[0]</ItemText>
+          <ItemText>Roll_test</ItemText>
         </Ww>
         <Ww>
           <count>8</count>
           <WinNumber>2</WinNumber>
-          <ItemText>IMU_Recieve_Buf[1]</ItemText>
+          <ItemText>thetta_vector</ItemText>
         </Ww>
         <Ww>
           <count>9</count>
           <WinNumber>2</WinNumber>
-          <ItemText>IMU_Recieve_Buf[2]</ItemText>
+          <ItemText>theta</ItemText>
         </Ww>
         <Ww>
           <count>10</count>
           <WinNumber>2</WinNumber>
-          <ItemText>IMU_Recieve_Buf[3]</ItemText>
-        </Ww>
-        <Ww>
-          <count>11</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>IMU_Recieve_Buf[4]</ItemText>
-        </Ww>
-        <Ww>
-          <count>12</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>IMU_Recieve_Buf[5]</ItemText>
+          <ItemText>theta_elec_degrees</ItemText>
         </Ww>
       </WatchWindow2>
       <Tracepoint>

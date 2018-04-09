@@ -126,7 +126,7 @@ float	Vd;
 float Va, Vb, Vc, Va_1, Vb_1, Vc_1;
 float theta, theta_elec_degrees;
 float Vinv1,Vinv2, Vinv3;
-float angle_init , error_angle_last;
+float angle_init , error_angle_last, sine_init, cos_init;
  extern float angle ;
 //extern float Speed;
 //extern float alpha;
@@ -135,16 +135,35 @@ float angle_init , error_angle_last;
 
 void FOC_InitPosition(void) // establishing zero position, d-axis directed to A winding, theta = 90
 {
-	/*
-	TIM4->CCR1 = (uint32_t)(12*PWM_period/Vdc) ; 
-  TIM4->CCR2 = (uint32_t)(3*PWM_period/Vdc)  ;
-  TIM4->CCR3 = (uint32_t)(3*PWM_period/Vdc)  ;
+	
+	Vq=3;
+	
+	Va_1 = arm_cos_f32(0);//cos(theta         );     
+	Vb_1 = arm_cos_f32(0 - 2.0943951023931954923084289221863);//cos(theta - 2.0943951023931954923084289221863 ); //2*Pi/3
+	Vc_1 = arm_cos_f32(0 + 2.0943951023931954923084289221863);//cos(theta + 2.0943951023931954923084289221863);
+	
+	Va = Va_1 * Vq; // projection calculation of Vq into A phase
+	Vb = Vb_1 * Vq; // projection calculation of Vq into B phase
+	Vc = Vc_1 * Vq; // projection calculation of Vq into C phase
+	
+	Vinv1 = Va + 6; // Obtaining value for invertor, +6 because Vinv relates with V_phase as Vinv = Vphase + Vdc/2 in order to avoid negative values for invertor voltage.
+	Vinv2 = Vb + 6; // should also be taken into account that Vphase(max) = Vdc/2 (with sine PWM) 
+	Vinv3 = Vc + 6;
+	
+	TIM4->CCR1 = (uint32_t)(Vinv1*PWM_period/Vdc)  ; 
+  TIM4->CCR2 = (uint32_t)(Vinv2*PWM_period/Vdc)  ;
+  TIM4->CCR3 = (uint32_t)(Vinv3*PWM_period/Vdc)  ;
 	
 	myDelay_ms(1000);	
-	*/
+	
 	// init angle was calculated once. Now it is used like starting point for electrical angles and engine does not need position initialization
 	
-	angle_init = 238.066;//average_angle() ;//get_angle();//average_angle() ;
+	/*
+	angle_init = get_angle()*0.01745329251994329576923690768489 ;//Pi/180; // translating into radians;
+  sine_init = arm_sin_f32(angle_init); 
+	cos_init = arm_cos_f32(angle_init);
+	*/
+	angle_init = CQ_average_angle();//atan2(sine_init, cos_init)*57.295779513082320876798154814105 ;//238.066;//average_angle() ;//get_angle();//average_angle() ;
 	error_angle_last = 0;
 	
 }
@@ -282,14 +301,14 @@ void sinus_control_V2(float err)
 	
 	
 	step = err*0.0002;
-	step2 = step;
+	//step2 = step;
 	//theta_elec_degrees = ((err)*11 + 90 ); // 11 - pole pairs (22P). + 90 because at initial position theta = 90  
 	if(step>0.006) { step=0.006;}
 	if(step< -0.006) {step=-0.006; }
 	theta = theta+step;
 	
 	
-	Vq=6;
+	Vq=3;
 	
 	
 	Va_1 = arm_cos_f32(theta);//cos(theta         );     
@@ -315,3 +334,143 @@ void sinus_control_V2(float err)
 	
 	
 }
+
+
+
+
+
+
+
+
+extern float sin_x, cos_x, tv_g, t_g, t_d;
+float thetta_vector;
+
+
+void combined_control_V3(float angle, float error_angle, float K_p, float K_d, float K_I, uint32_t dt)
+{
+	
+	
+	theta_elec_degrees = ((angle - angle_init)*Pole_Pairs + 90 ); // 11 - pole pairs (22P). + 90 because at initial position theta = 90  
+	theta = theta_elec_degrees*0.01745329251994329576923690768489 ;//Pi/180; // translating into radians
+	 
+	
+	if(!started)
+	{
+		thetta_vector = theta - PI/2;// aim voltage vector to d axis
+		Va_1 = arm_cos_f32(thetta_vector);//cos(theta         );     
+	Vb_1 = arm_cos_f32(thetta_vector - 2.0943951023931954923084289221863);//cos(theta - 2.0943951023931954923084289221863 ); //2*Pi/3
+	Vc_1 = arm_cos_f32(thetta_vector + 2.0943951023931954923084289221863);//cos(theta + 2.0943951023931954923084289221863);
+	
+		
+		Vq = 3;
+	
+	Va = Va_1 * Vq; // projection calculation of Vq into A phase
+	Vb = Vb_1 * Vq; // projection calculation of Vq into B phase
+	Vc = Vc_1 * Vq; // projection calculation of Vq into C phase
+	
+	Vinv1 = Va + 6; // Obtaining value for invertor, +6 because Vinv relates with V_phase as Vinv = Vphase + Vdc/2 in order to avoid negative values for invertor voltage.
+	Vinv2 = Vb + 6; // should also be taken into account that Vphase(max) = Vdc/2 (with sine PWM) 
+	Vinv3 = Vc + 6;
+		
+		
+	
+	// Vinx_max = 12V, PWM = Vinv*PWM_period/Vinv_max
+	TIM4->CCR1 = (uint32_t)(Vinv1*PWM_period/Vdc)  ; 
+  TIM4->CCR2 = (uint32_t)(Vinv2*PWM_period/Vdc)  ;
+  TIM4->CCR3 = (uint32_t)(Vinv3*PWM_period/Vdc)  ;
+		started =1;
+		
+		
+	
+	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	step = error_angle*0.0002;
+//	step = error_angle*0.02;
+	//step2 = step;
+	//theta_elec_degrees = ((err)*11 + 90 ); // 11 - pole pairs (22P). + 90 because at initial position theta = 90  
+	
+	
+	if(step>0.006) { step=0.006;}
+	if(step< -0.006) {step=-0.006; }
+	
+	thetta_vector = thetta_vector+step;
+	
+	
+	
+	
+	// tranlating to unit circle for visual determination of angle of loosing synchronisation
+	
+	//sin_x = arm_sin_f32(thetta_vector);
+	//cos_x = arm_cos_f32(thetta_vector); 
+	tv_g = thetta_vector*57.295779513082320876798154814105 ;//atan2(sin_x, cos_x)*57.295779513082320876798154814105 ;
+	
+	//sin_x = arm_sin_f32(theta);
+	//cos_x = arm_cos_f32(theta); 
+	t_g = theta*57.295779513082320876798154814105 ;//atan2(sin_x, cos_x)*57.295779513082320876798154814105 ;
+	
+	t_d = tv_g - t_g;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	if((thetta_vector - theta) < -PI )
+	{
+		thetta_vector = theta - PI ;//- 2*PI;
+	}
+	if((thetta_vector - theta)> 0 ) 
+	{
+		thetta_vector = theta;
+	}
+	
+	
+	//if(thetta_vector < - theta) thetta_vector = - theta;
+	
+	
+	
+	
+	Vq=6;
+	
+	
+	Va_1 = arm_cos_f32(thetta_vector);//cos(theta         );     
+	Vb_1 = arm_cos_f32(thetta_vector - 2.0943951023931954923084289221863);//cos(theta - 2.0943951023931954923084289221863 );
+	Vc_1 = arm_cos_f32(thetta_vector + 2.0943951023931954923084289221863);//cos(theta + 2.0943951023931954923084289221863);
+	
+	
+	Va = Va_1 * Vq; // projection calculation of Vq into A phase
+	Vb = Vb_1 * Vq; // projection calculation of Vq into B phase
+	Vc = Vc_1 * Vq; // projection calculation of Vq into C phase
+	
+	Vinv1 = Va + 6; // Obtaining value for invertor, +6 because Vinv relates with V_phase as Vinv = Vphase + Vdc/2 in order to avoid negative values for invertor voltage.
+	Vinv2 = Vb + 6; // should also be taken into account that Vphase(max) = Vdc/2 (with sine PWM) 
+	Vinv3 = Vc + 6;
+	
+	// Vinx_max = 12V, PWM = Vinv*PWM_period/Vinv_max
+	TIM4->CCR1 = (uint32_t)(Vinv1*PWM_period/Vdc)  ; 
+  TIM4->CCR2 = (uint32_t)(Vinv2*PWM_period/Vdc)  ;
+  TIM4->CCR3 = (uint32_t)(Vinv3*PWM_period/Vdc)  ;
+	
+
+	
+	
+	
+	
+	
+} 
