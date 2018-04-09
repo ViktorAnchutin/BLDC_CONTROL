@@ -31,9 +31,57 @@ compiling main.c...
 .\LIB\mylib.h(8): warning:  #1-D: last line of file ends without a newline
   #define window_Roll 10000
 main.c: 1 warning, 0 errors
+compiling motor.c...
+.\LIB\mylib.h(8): warning:  #1-D: last line of file ends without a newline
+  #define window_Roll 10000
+LIB\motor\motor.c(178): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	theta = theta_elec_degrees*0.01745329251994329576923690768489 ;//Pi/180; // translating into radians
+LIB\motor\motor.c(214): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	Vb_1 = arm_cos_f32(theta - 2.0943951023931954923084289221863);//cos(theta - 2.0943951023931954923084289221863 /* 2*Pi/3 */);
+LIB\motor\motor.c(215): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	Vc_1 = arm_cos_f32(theta + 2.0943951023931954923084289221863);//cos(theta + 2.0943951023931954923084289221863);
+LIB\motor\motor.c(241): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	theta = theta_elec_degrees*0.01745329251994329576923690768489 ;//Pi/180; // translating into radians
+LIB\motor\motor.c(247): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	Vb_1 = arm_cos_f32(theta - 2.0943951023931954923084289221863);//cos(theta - 2.0943951023931954923084289221863 /* 2*Pi/3 */);
+LIB\motor\motor.c(248): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	Vc_1 = arm_cos_f32(theta + 2.0943951023931954923084289221863);//cos(theta + 2.0943951023931954923084289221863);
+LIB\motor\motor.c(282): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	Vb_1 = arm_cos_f32(theta - 2.0943951023931954923084289221863);//cos(theta - 2.0943951023931954923084289221863 /* 2*Pi/3 */);
+LIB\motor\motor.c(283): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	Vc_1 = arm_cos_f32(theta + 2.0943951023931954923084289221863);//cos(theta + 2.0943951023931954923084289221863);
+LIB\motor\motor.c(303): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	step = err*0.001;
+LIB\motor\motor.c(306): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	if(step>0.01) { step=0.01;}
+LIB\motor\motor.c(315): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	Vb_1 = arm_cos_f32(theta - 2.0943951023931954923084289221863);//cos(theta - 2.0943951023931954923084289221863 /* 2*Pi/3 */);
+LIB\motor\motor.c(316): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	Vc_1 = arm_cos_f32(theta + 2.0943951023931954923084289221863);//cos(theta + 2.0943951023931954923084289221863);
+LIB\motor\motor.c(354): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	theta = theta_elec_degrees*0.01745329251994329576923690768489 ;//Pi/180; // translating into radians
+LIB\motor\motor.c(361): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	Vb_1 = arm_cos_f32(thetta_vector - 2.0943951023931954923084289221863);//cos(theta - 2.0943951023931954923084289221863 ); //2*Pi/3
+LIB\motor\motor.c(362): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	Vc_1 = arm_cos_f32(thetta_vector + 2.0943951023931954923084289221863);//cos(theta + 2.0943951023931954923084289221863);
+LIB\motor\motor.c(396): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	step = error_angle*0.0003;
+LIB\motor\motor.c(402): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	if(step>0.006) { step=0.006;}
+LIB\motor\motor.c(414): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	tv_g = thetta_vector*57.295779513082320876798154814105 ;//atan2(sin_x, cos_x)*57.295779513082320876798154814105 ;
+LIB\motor\motor.c(418): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	t_g = theta*57.295779513082320876798154814105 ;//atan2(sin_x, cos_x)*57.295779513082320876798154814105 ;
+LIB\motor\motor.c(453): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	Vb_1 = arm_cos_f32(thetta_vector - 2.0943951023931954923084289221863);//cos(theta - 2.0943951023931954923084289221863 );
+LIB\motor\motor.c(454): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	Vc_1 = arm_cos_f32(thetta_vector + 2.0943951023931954923084289221863);//cos(theta + 2.0943951023931954923084289221863);
+LIB\motor\motor.c(476): warning:  #1-D: last line of file ends without a newline
+  } 
+LIB\motor\motor.c: 23 warnings, 0 errors
 linking...
-Program Size: Code=15820 RO-data=2636 RW-data=472 ZI-data=52056  
-".\Objects\SPI_FOC.axf" - 0 Error(s), 1 Warning(s).
+Program Size: Code=15920 RO-data=2640 RW-data=472 ZI-data=52056  
+".\Objects\SPI_FOC.axf" - 0 Error(s), 24 Warning(s).
 
 <h2>Software Packages used:</h2>
 

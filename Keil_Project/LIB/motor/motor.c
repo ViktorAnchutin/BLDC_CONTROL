@@ -300,15 +300,15 @@ void sinus_control_V2(float err)
 	
 	
 	
-	step = err*0.0002;
+	step = err*0.001;
 	//step2 = step;
 	//theta_elec_degrees = ((err)*11 + 90 ); // 11 - pole pairs (22P). + 90 because at initial position theta = 90  
-	if(step>0.006) { step=0.006;}
-	if(step< -0.006) {step=-0.006; }
+	if(step>0.01) { step=0.01;}
+	if(step< -0.01) {step=-0.01; }
 	theta = theta+step;
 	
 	
-	Vq=3;
+	Vq=5;
 	
 	
 	Va_1 = arm_cos_f32(theta);//cos(theta         );     
@@ -362,7 +362,7 @@ void combined_control_V3(float angle, float error_angle, float K_p, float K_d, f
 	Vc_1 = arm_cos_f32(thetta_vector + 2.0943951023931954923084289221863);//cos(theta + 2.0943951023931954923084289221863);
 	
 		
-		Vq = 3;
+		Vq = 6;
 	
 	Va = Va_1 * Vq; // projection calculation of Vq into A phase
 	Vb = Vb_1 * Vq; // projection calculation of Vq into B phase
@@ -393,7 +393,7 @@ void combined_control_V3(float angle, float error_angle, float K_p, float K_d, f
 	
 	
 	
-	step = error_angle*0.0002;
+	step = error_angle*0.0003;
 //	step = error_angle*0.02;
 	//step2 = step;
 	//theta_elec_degrees = ((err)*11 + 90 ); // 11 - pole pairs (22P). + 90 because at initial position theta = 90  

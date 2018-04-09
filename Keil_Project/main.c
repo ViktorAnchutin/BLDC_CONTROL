@@ -276,7 +276,7 @@ t1_IMU = timex; //init measure time IMU
 	//---------------------------------------------------
 
 	//FOC(angle, Roll, 0.1,   0,  0.1,  dt1)	;
-	FOC(angle, angle_error, 0.2,   0,  0.2,  dt1)	;
+//	FOC(angle, angle_error, 0.35,   0,  0.01,  dt1)	;
 	//=----------------------------------------------
 	
 	
@@ -285,7 +285,7 @@ t1_IMU = timex; //init measure time IMU
 	
 	
 //	sinus_control(des_val);
-	//sinus_control_V2(angle_error);
+	sinus_control_V2(angle_error);
 //	 combined_control_V3(angle, angle_error, 0.2 , 0, 0, 0);
 		t2 = TIM5->CNT;
 	  dt1 = t2 - t1;
