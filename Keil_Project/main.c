@@ -70,7 +70,7 @@ int main(void)
 	
 	
 	
-	USART_2_init();
+	//USART_2_init();
 	SPI3_ini();
 	// encoder_as5048_SPI3();
 	//angle = get_angle();
@@ -97,23 +97,16 @@ int main(void)
 
 
 
-/*
-  TIM4->CCR1 = 1000  ; 
-  TIM4->CCR2 = 1500  ;
-  TIM4->CCR3 = 2000  ; */
 
 
-char str[30];
-sprintf(str, "Hello world");
 
 
-timex = TIM5->CNT; //init delay getting angle
-t1_IMU = timex; //init measure time IMU
 
 	while(1)
 	{
-		
-				t1 = TIM5->CNT;
+		/*
+
+			
 		
 		
 		if(IMU_data_ready)
@@ -125,7 +118,11 @@ t1_IMU = timex; //init measure time IMU
 			//Roll_raw= ((float)((IMU_Recieve_Buf[1]<<8)))/32768*PI;
 			//Pitch = ((float)((IMU_Recieve_Buf[3]<<8)|IMU_Recieve_Buf[2]))/32768*180;
 			//Yaw = ((float)((IMU_Recieve_Buf[5]<<8)|IMU_Recieve_Buf[4]))/32768*180;
-			
+			Roll_raw_test = ((float)(IMU_Recieve_Buf[1]<<8|IMU_Recieve_Buf[0]&~0x7))/32768*PI;
+			roll_sine_test = arm_sin_f32(Roll_raw_test); 
+				roll_cos_test = arm_cos_f32(Roll_raw_test);
+		
+			  Roll_test = atan2(roll_sine_test, roll_cos_test)*57.295779513082320876798154814105 ;
 			
 					
 			
@@ -133,7 +130,7 @@ t1_IMU = timex; //init measure time IMU
 			  roll_sine = arm_sin_f32(Roll_raw); 
 				roll_cos = arm_cos_f32(Roll_raw);
 			  Roll = atan2(roll_sine, roll_cos)*57.295779513082320876798154814105 ;
-			
+			*/
 			/*
 			
 			if(!filled_Roll)
@@ -171,11 +168,11 @@ t1_IMU = timex; //init measure time IMU
 			
 			
 		}
-		*/
+		
 			
 			IMU_data_ready=0;
 		}
-		
+		*/
 		
 	//	myDelay_ms(500);
 		//USATRT2_SendStr(str);
@@ -255,28 +252,29 @@ t1_IMU = timex; //init measure time IMU
 	angle = CQ_average_angle();//ThirdOrder_average();//average_angle();//	angle = get_angle();
    
 
-
-		if(((TIM5->CNT) - timex) > 10*1000) // get discrete angle from encoder
+/*
+	
+	if(((TIM5->CNT) - timex) > 10*1000) // get discrete angle from encoder
 		{
 			angle1 = get_angle();
 			//des_val = (float)ADC_average*360/4095 + 100;
 			timex = TIM5->CNT;
 		}
-		
+		*/
 		
 				
-	des_val = (float)ADC_average*360/4095+100-360; // des val with Roll
+	//des_val = (float)ADC_average*360/4095+100-360; // des val with Roll
 	//	des_val = (float)ADC_average*360/4095 + 100; // des val with Encoder
-		
-  //angle_error = des_val - angle;
+		des_val = (float)ADC_average*360/4095;
+  angle_error = des_val - angle;
 	//angle_error = des_val + Roll;
 	
-	angle_error =  Roll;
+//	angle_error =  Roll_test;
 	
 	//---------------------------------------------------
 
 	//FOC(angle, Roll, 0.1,   0,  0.1,  dt1)	;
-//	FOC(angle, angle_error, 0.35,   0,  0.01,  dt1)	;
+	FOC(angle, angle_error, 0.5,   0,  0.01,  dt1)	;
 	//=----------------------------------------------
 	
 	
@@ -285,7 +283,7 @@ t1_IMU = timex; //init measure time IMU
 	
 	
 //	sinus_control(des_val);
-	sinus_control_V2(angle_error);
+	//sinus_control_V2(angle_error);
 //	 combined_control_V3(angle, angle_error, 0.2 , 0, 0, 0);
 		t2 = TIM5->CNT;
 	  dt1 = t2 - t1;
@@ -299,7 +297,7 @@ t1_IMU = timex; //init measure time IMU
 
 
 
-
+/*
 void USART2_IRQHandler()
 {
 	if(USART_GetITStatus(USART2, USART_IT_TXE)==SET)
@@ -358,7 +356,7 @@ void USART2_IRQHandler()
 }
 
 
-
+*/
 
 
 

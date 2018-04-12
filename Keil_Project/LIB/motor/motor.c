@@ -199,7 +199,7 @@ void FOC(float angle, float error_angle, float K_p, float K_d, float K_I, uint32
 		angle_mem = angle;
 	}
 	integral = dt*0.000001*error_angle_last+integral;
-	Vq = K_p*error_angle + ((error_angle - error_angle_last)/(dt*0.000001))*K_d + integral*K_I; //Speed; //
+	Vq = K_p*error_angle ;//+ ((error_angle - error_angle_last)/(dt*0.000001))*K_d + integral*K_I; //Speed; //
 	error_angle_last = error_angle;
 	
 	
@@ -300,15 +300,15 @@ void sinus_control_V2(float err)
 	
 	
 	
-	step = err*0.001;
+	step = err*0.0003;
 	//step2 = step;
 	//theta_elec_degrees = ((err)*11 + 90 ); // 11 - pole pairs (22P). + 90 because at initial position theta = 90  
-	if(step>0.01) { step=0.01;}
-	if(step< -0.01) {step=-0.01; }
+	if(step>0.005) { step=0.005;}
+	if(step< -0.005) {step=-0.005; }
 	theta = theta+step;
 	
 	
-	Vq=5;
+	Vq=2;
 	
 	
 	Va_1 = arm_cos_f32(theta);//cos(theta         );     
