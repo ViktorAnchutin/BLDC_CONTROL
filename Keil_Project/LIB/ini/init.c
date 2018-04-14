@@ -4,8 +4,8 @@
 #include "stm32f4xx_tim.h"
 #include "init.h"
 #include "stm32f4xx_usart.h"
-
-
+#include "stm32f4xx_exti.h"
+#include "stm32f4xx_syscfg.h"
 
 
 
@@ -236,3 +236,29 @@ void PWM_INx_ini(void)
 	 USART_Cmd(USART2, ENABLE);
  }
 
+void user_button_init(void)
+{
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA,ENABLE);
+	GPIO_InitTypeDef User_But_ini;//
+	User_But_ini.GPIO_Mode = GPIO_Mode_IN;//
+	User_But_ini.GPIO_Pin = GPIO_Pin_0;// 
+	User_But_ini.GPIO_Speed = GPIO_Speed_2MHz;
+  User_But_ini.GPIO_OType = GPIO_OType_PP;
+  User_But_ini.GPIO_PuPd = GPIO_PuPd_NOPULL; 
+	GPIO_Init(GPIOA, &User_But_ini);//
+	
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOA, EXTI_PinSource0);
+	
+	EXTI_InitTypeDef EXTI_InitStruct;
+	EXTI_InitStruct.EXTI_Line = EXTI_Line0;
+	EXTI_InitStruct.EXTI_LineCmd = ENABLE;
+	EXTI_InitStruct.EXTI_Mode=EXTI_Mode_Interrupt;
+	EXTI_InitStruct.EXTI_Trigger=EXTI_Trigger_Rising;
+	EXTI_Init(&EXTI_InitStruct);
+	
+	
+	
+	
+	NVIC_EnableIRQ(EXTI0_IRQn);
+	
+}

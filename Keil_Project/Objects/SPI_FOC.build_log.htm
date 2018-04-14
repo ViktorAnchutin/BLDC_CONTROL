@@ -30,10 +30,14 @@ Build target 'Target 1'
 compiling main.c...
 .\LIB\mylib.h(8): warning:  #1-D: last line of file ends without a newline
   #define window_Roll 10000
-main.c: 1 warning, 0 errors
+main.c(75): warning:  #223-D: function "user_button_init" declared implicitly
+  	user_button_init();
+main.c(223): warning:  #1-D: last line of file ends without a newline
+  	
+main.c: 3 warnings, 0 errors
 linking...
-Program Size: Code=14072 RO-data=2640 RW-data=456 ZI-data=52056  
-".\Objects\SPI_FOC.axf" - 0 Error(s), 1 Warning(s).
+Program Size: Code=16968 RO-data=2640 RW-data=460 ZI-data=52060  
+".\Objects\SPI_FOC.axf" - 0 Error(s), 3 Warning(s).
 
 <h2>Software Packages used:</h2>
 

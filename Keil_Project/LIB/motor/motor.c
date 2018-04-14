@@ -135,7 +135,7 @@ float angle_init , error_angle_last, sine_init, cos_init;
 
 void FOC_InitPosition(void) // establishing zero position, d-axis directed to A winding, theta = 90
 {
-	
+	/*
 	Vq=3;
 	
 	Va_1 = arm_cos_f32(0);//cos(theta         );     
@@ -155,6 +155,7 @@ void FOC_InitPosition(void) // establishing zero position, d-axis directed to A 
   TIM4->CCR3 = (uint32_t)(Vinv3*PWM_period/Vdc)  ;
 	
 	myDelay_ms(1000);	
+	*/
 	
 	// init angle was calculated once. Now it is used like starting point for electrical angles and engine does not need position initialization
 	
@@ -163,7 +164,7 @@ void FOC_InitPosition(void) // establishing zero position, d-axis directed to A 
   sine_init = arm_sin_f32(angle_init); 
 	cos_init = arm_cos_f32(angle_init);
 	*/
-	angle_init = CQ_average_angle();//atan2(sine_init, cos_init)*57.295779513082320876798154814105 ;//238.066;//average_angle() ;//get_angle();//average_angle() ;
+	angle_init = 238.066;//CQ_average_angle();//atan2(sine_init, cos_init)*57.295779513082320876798154814105 ;//238.066;//average_angle() ;//get_angle();//average_angle() ;
 	error_angle_last = 0;
 	
 }
@@ -273,8 +274,30 @@ void sinus_control(float des_val_)
 uint8_t started;
 float step, step2;
 
-void sinus_control_V2(float err)
+void sinus_control_V2(float error_angle)
 {
+	
+	
+	if(error_angle > 180)
+	{
+		error_angle = 360 - error_angle;
+		error_angle = - error_angle;
+	}
+	if(error_angle < -180)
+	{
+		error_angle = 360 + error_angle;
+		//error_angle = - error_angle;
+	}
+	
+	
+	error_in_proc = error_angle;
+	if ((error_angle > 100)||(error_angle< -100)) 
+	{
+		er_mem = error_angle;
+		angle_mem = angle;
+	}
+	
+	
 	if(!started)
 	{
 		theta = 0;
@@ -300,15 +323,15 @@ void sinus_control_V2(float err)
 	
 	
 	
-	step = err*0.0003;
-	//step2 = step;
-	//theta_elec_degrees = ((err)*11 + 90 ); // 11 - pole pairs (22P). + 90 because at initial position theta = 90  
-	if(step>0.005) { step=0.005;}
-	if(step< -0.005) {step=-0.005; }
+	step = error_angle*0.001;
+	
+	if(step>0.01) { step=0.01;}
+	if(step< -0.01) {step=-0.01; }
+	
 	theta = theta+step;
 	
 	
-	Vq=2;
+	Vq=3;
 	
 	
 	Va_1 = arm_cos_f32(theta);//cos(theta         );     
@@ -348,6 +371,30 @@ float thetta_vector;
 
 void combined_control_V3(float angle, float error_angle, float K_p, float K_d, float K_I, uint32_t dt)
 {
+	
+	
+	
+	if(error_angle > 180)
+	{
+		error_angle = 360 - error_angle;
+		error_angle = - error_angle;
+	}
+	if(error_angle < -180)
+	{
+		error_angle = 360 + error_angle;
+		//error_angle = - error_angle;
+	}
+	
+	
+	error_in_proc = error_angle;
+	if ((error_angle > 100)||(error_angle< -100)) 
+	{
+		er_mem = error_angle;
+		angle_mem = angle;
+	}
+	
+	
+	
 	
 	
 	theta_elec_degrees = ((angle - angle_init)*Pole_Pairs + 90 ); // 11 - pole pairs (22P). + 90 because at initial position theta = 90  
@@ -393,7 +440,7 @@ void combined_control_V3(float angle, float error_angle, float K_p, float K_d, f
 	
 	
 	
-	step = error_angle*0.0003;
+	step = error_angle*0.001;
 //	step = error_angle*0.02;
 	//step2 = step;
 	//theta_elec_degrees = ((err)*11 + 90 ); // 11 - pole pairs (22P). + 90 because at initial position theta = 90  
@@ -406,7 +453,7 @@ void combined_control_V3(float angle, float error_angle, float K_p, float K_d, f
 	
 	
 	
-	
+	/*
 	// tranlating to unit circle for visual determination of angle of loosing synchronisation
 	
 	//sin_x = arm_sin_f32(thetta_vector);
@@ -419,7 +466,7 @@ void combined_control_V3(float angle, float error_angle, float K_p, float K_d, f
 	
 	t_d = tv_g - t_g;
 	
-	
+	*/
 	
 	
 	
@@ -446,7 +493,7 @@ void combined_control_V3(float angle, float error_angle, float K_p, float K_d, f
 	
 	
 	
-	Vq=6;
+	Vq=3;
 	
 	
 	Va_1 = arm_cos_f32(thetta_vector);//cos(theta         );     
