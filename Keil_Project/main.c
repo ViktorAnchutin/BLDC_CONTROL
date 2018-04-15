@@ -1,7 +1,5 @@
 #include "stm32f4xx.h" 
 #include "as5048.h"
-
-                 // Device header
 #include "stm32f4xx_gpio.h"
 #include "stm32f4xx_rcc.h"
 #include "stm32f4xx_spi.h"
@@ -11,7 +9,7 @@
 #include <stdio.h>
 
 
-	uint8_t mode;
+uint8_t mode;
 float angle, angle_error, angle_test, angle1;
 float des_val,des_val1;
 uint32_t t1, t2, t3, t4, dt1, dt22, p, timex, t1_IMU, t2_IMU, dt_IMU;
@@ -19,6 +17,8 @@ uint32_t t1, t2, t3, t4, dt1, dt22, p, timex, t1_IMU, t2_IMU, dt_IMU;
 float voltage, current;
 
 float sin_x, cos_x, tv_g, t_g, t_d;
+
+uint8_t ADC_started;
 
 // moving average filter variables
 
@@ -28,7 +28,7 @@ uint8_t filled_ADC;
 	float data_ADC;
 	float arr_ADC[window_ADC],  angle_average, a_i_ADC,  des_val_raw; // variables for first order moving average
 	uint16_t k_ADC; // counter
-	uint32_t ADC_average;
+	float ADC_average;
 	uint8_t flag_ADC;
   uint32_t sum_ADC;
 	
@@ -64,6 +64,16 @@ uint8_t IMU_data;
 float Pitch, Roll, Yaw;
 float Roll_raw, roll_sine, roll_cos, Roll_raw_test, roll_sine_test, roll_cos_test, Roll_test;
 
+ moving_average_type ADC_filter;
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
 int main(void)
 	
 {
@@ -76,59 +86,46 @@ int main(void)
 	
 	
 	TIM5_ini(); // Delay timer
+		
+	TIM4_ini(); // PWM timer	
 	
-	led15_ini();
-	
-	TIM4_ini(); // PWM timer
-	
-	
-	PWM_ENx_ini();
-	port_init();
+	PWM_INx_init();
+	ENx_init();
 	ADC_initt();
 	Set_nRes_nSleep();
-	GPIO_SetBits(GPIOA, GPIO_Pin_1|GPIO_Pin_2|GPIO_Pin_3); // EN1,2,3 to 1 enable all half-bridges
+	Set_ENx();
 	FOC_InitPosition();
 	
-	
-	
-
-	
-//		des_val = -36; ///////////////
-
-
-
-
-
-
+	des_val = 36; ///////////////
 
 
 	while(1)
 	{
 		
-		if(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0)==1)
+		
+		if(!ADC_filter.filled)
 		{
-			
-		}			
+			while(!ADC_filter.filled); // wait for adc filter ready
+		}
+		
 		
 			
-	t1 = TIM5->CNT;
+			t1 = TIM5->CNT;
 		
 	angle = CQ_average_angle();//ThirdOrder_average();//average_angle();//	angle = get_angle();
 		
-  des_val = (float)ADC_average*360/4095;
+  des_val = ADC_average*360/4095;
   
 	angle_error = des_val - angle;
 	
-if(mode==0)	FOC(angle, angle_error, 0.5,   0,  0.01,  dt1)	;
-		
+	if(mode==0)	FOC(angle, angle_error, 1,   0,  0.01,  dt1)	;		
  
-		
 	if(mode==1) sinus_control_V2(angle_error);
 		
-	 if(mode==2)combined_control_V3(angle, angle_error, 0.2 , 0, 0, 0);
+	if(mode==2)combined_control_V3(angle, angle_error, 0.2 , 0, 0, 0);
 		
-		t2 = TIM5->CNT;
-	  dt1 = t2 - t1;
+			t2 = TIM5->CNT;
+			dt1 = t2 - t1;
 	
 
 		
@@ -166,56 +163,12 @@ void ADC_IRQHandler()
 			
 			ADC_ClearITPendingBit(ADC1, ADC_IT_EOC);
 			
-			// averaging	
-		if(!filled_ADC)
-		{
-			
-			
-				arr_ADC[i_ADC] = ADC_GetConversionValue(ADC1) ;
-				sum_ADC = sum_ADC + arr_ADC[i_ADC];
-				if(i_ADC < window_ADC - 1) 
-				{
-					i_ADC++;
-				}
-				else
-				{
-					ADC_average  = sum_ADC / (uint32_t)window_ADC ; // out of the filter
-					filled_ADC = 1;
-					k_ADC=0;
-					
-				}
-			 
-		}
-		
-		// 2) start filtering
-		
-		else
-		{
-			a_i_ADC = ADC_GetConversionValue(ADC1) ;
-			des_val_raw = a_i_ADC*360/4095;
-		//	flag_ADC = 1;
-			sum_ADC = sum_ADC - arr_ADC[k_ADC] + a_i_ADC;
-			ADC_average  = sum_ADC / (uint32_t)window_ADC ; // out of the filter
-			arr_ADC[k_ADC] = a_i_ADC; // substitute thrown out value with new value for cycling
-			k_ADC++;
-			if(k_ADC >= window_ADC) k_ADC=0; // array loop
-			
-			
-		}
-		
-		 
-		
-			//Speed = (float)(ADC_GetConversionValue(ADC1))*6/4095; // used for potentiometr speed control
-		//	des_val_raw = ADC_GetConversionValue(ADC1);//*360/4095; // used for potentiometr angle tracking
-			
-			
-			
-			//alpha = (float)(ADC_GetConversionValue(ADC1))*360/4095;
-			
+			ADC_average =  moving_average(&ADC_filter, (float)ADC_GetConversionValue(ADC1), 2000);
+						
 			ADC_RegularChannelConfig(ADC1, ADC_Channel_9, 1, ADC_SampleTime_480Cycles);
-	    ADC_SoftwareStartConv(ADC1);
-			//p++;
-			
+	    
+			ADC_SoftwareStartConv(ADC1);
+									
 		}
 		
 	}  

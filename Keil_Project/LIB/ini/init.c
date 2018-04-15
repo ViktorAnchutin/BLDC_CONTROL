@@ -48,8 +48,7 @@ void TIM4_ini(void)
 	
 	TIM_Cmd(TIM4, ENABLE);
 	
-	//	TIM_ITConfig(TIM4, TIM_IT_Update, ENABLE);// Interrupts for Update
-	//NVIC_EnableIRQ(TIM4_IRQn);
+	
 	
 }
 
@@ -57,88 +56,64 @@ void TIM4_ini(void)
 
 // PWM out for 12th pin
 
-void PWM_ENx_ini(void) // INx, IN - PWMpins
+void PWM_INx_init(void) // INx, IN - PWMpins
 {
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD,ENABLE);
 	
 	
-	//EN1 --> PD12--------------------------
-	GPIO_InitTypeDef ledinit_AF;//
-	GPIO_StructInit(&ledinit_AF);// 
-	ledinit_AF.GPIO_Mode = GPIO_Mode_AF;//
-	ledinit_AF.GPIO_Pin = GPIO_Pin_12;// 
+	//IN1 --> PD12--------------------------
+	GPIO_InitTypeDef init_AF;//
+	GPIO_StructInit(&init_AF);// 
+	init_AF.GPIO_Mode = GPIO_Mode_AF;//
+	init_AF.GPIO_Pin = GPIO_Pin_12;// 
 	GPIO_PinAFConfig(GPIOD, GPIO_PinSource12, GPIO_AF_TIM4);// 
-	GPIO_Init(GPIOD, &ledinit_AF);// 
+	GPIO_Init(GPIOD, &init_AF);// 
 	
-	//EN2 --> PD13--------------------------
-	GPIO_InitTypeDef ledinit_AF2;//
-	GPIO_StructInit(&ledinit_AF2);// 
-	ledinit_AF2.GPIO_Mode = GPIO_Mode_AF;//
-	ledinit_AF2.GPIO_Pin = GPIO_Pin_13;// 
+	//IN2 --> PD13--------------------------
+	
+	GPIO_StructInit(&init_AF);// 
+	init_AF.GPIO_Mode = GPIO_Mode_AF;//
+	init_AF.GPIO_Pin = GPIO_Pin_13;// 
 	GPIO_PinAFConfig(GPIOD, GPIO_PinSource13, GPIO_AF_TIM4);// 
-	GPIO_Init(GPIOD, &ledinit_AF2);//
+	GPIO_Init(GPIOD, &init_AF);//
 	
 	
-	//EN3 --> PD14--------------------------
-	GPIO_InitTypeDef ledinit_AF3;//
-	GPIO_StructInit(&ledinit_AF2);// 
-	ledinit_AF3.GPIO_Mode = GPIO_Mode_AF;//
-	ledinit_AF3.GPIO_Pin = GPIO_Pin_14;// 
+	//IN3 --> PD14--------------------------
+
+	GPIO_StructInit(&init_AF);// 
+	init_AF.GPIO_Mode = GPIO_Mode_AF;//
+	init_AF.GPIO_Pin = GPIO_Pin_14;// 
 	GPIO_PinAFConfig(GPIOD, GPIO_PinSource14, GPIO_AF_TIM4);// 
-	GPIO_Init(GPIOD, &ledinit_AF3);//
+	GPIO_Init(GPIOD, &init_AF);//
 		
 }
 
 
 
-void port_init(void)
+void ENx_init(void)
 {
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
-	//RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC, ENABLE);
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
 	
-	GPIO_InitTypeDef ledinit;
-	GPIO_StructInit(&ledinit);
-	ledinit.GPIO_Pin = GPIO_Pin_1|GPIO_Pin_2|GPIO_Pin_3 | GPIO_Pin_4 | GPIO_Pin_5  ;
-	ledinit.GPIO_Mode = GPIO_Mode_OUT;
-	//GPIO_Init(GPIOC,&ledinit);
-	GPIO_Init(GPIOA,&ledinit);
+	GPIO_InitTypeDef ENx_init;
+	GPIO_StructInit(&ENx_init);
+	ENx_init.GPIO_Pin = GPIO_Pin_1|GPIO_Pin_2|GPIO_Pin_3 | GPIO_Pin_4 | GPIO_Pin_5  ;
+	ENx_init.GPIO_Mode = GPIO_Mode_OUT;
+	GPIO_Init(GPIOA,&ENx_init);
 	
-	
-	//Pin 0 - Button
-GPIO_InitTypeDef GPIO_InitDef;
-GPIO_InitDef.GPIO_Pin = GPIO_Pin_0;
-//Mode output
-GPIO_InitDef.GPIO_Mode = GPIO_Mode_IN;
-//Output type push-pull
-GPIO_InitDef.GPIO_OType = GPIO_OType_PP;
-//With pull down resistor
-GPIO_InitDef.GPIO_PuPd = GPIO_PuPd_DOWN;
-//50MHz pin speed
-GPIO_InitDef.GPIO_Speed = GPIO_Speed_50MHz;
- 
-//Initialize pin on GPIOA port
-GPIO_Init(GPIOA, &GPIO_InitDef);
-	
-	
-	
-	/*
-	GPIO_InitTypeDef ledinit2;
-	GPIO_StructInit(&ledinit2);
-	ledinit2.GPIO_Pin = GPIO_Pin_12|GPIO_Pin_13;
-	ledinit2.GPIO_Mode = GPIO_Mode_OUT;*/
-	
-
-	
-//	GPIO_Init(GPIOD, &ledinit2); // TENPORARY FOR TEST!!
-	
-	
+		
 }
+
+
+
+
+
+
 
 
 void ADC_initt(void) // PB1
 {
-		RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1, ENABLE);
 	
 	GPIO_InitTypeDef GPIO_AI;
@@ -167,37 +142,7 @@ void ADC_initt(void) // PB1
 }
 
 
-void PWM_INx_ini(void)
-{
-	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD,ENABLE);
-	
-	
-	//IN1 --> PD12--------------------------
-	GPIO_InitTypeDef ledinit_AF;//
-	GPIO_StructInit(&ledinit_AF);// 
-	ledinit_AF.GPIO_Mode = GPIO_Mode_AF;//
-	ledinit_AF.GPIO_Pin = GPIO_Pin_12;// 
-	GPIO_PinAFConfig(GPIOD, GPIO_PinSource12, GPIO_AF_TIM4);// 
-	GPIO_Init(GPIOD, &ledinit_AF);// 
-	
-	//IN2 --> PD13--------------------------
-	GPIO_InitTypeDef ledinit_AF2;//
-	GPIO_StructInit(&ledinit_AF2);// 
-	ledinit_AF2.GPIO_Mode = GPIO_Mode_AF;//
-	ledinit_AF2.GPIO_Pin = GPIO_Pin_13;// 
-	GPIO_PinAFConfig(GPIOD, GPIO_PinSource13, GPIO_AF_TIM4);// 
-	GPIO_Init(GPIOD, &ledinit_AF2);//
-	
-	
-	//IN3 --> PD14--------------------------
-	GPIO_InitTypeDef ledinit_AF3;//
-	GPIO_StructInit(&ledinit_AF2);// 
-	ledinit_AF3.GPIO_Mode = GPIO_Mode_AF;//
-	ledinit_AF3.GPIO_Pin = GPIO_Pin_14;// 
-	GPIO_PinAFConfig(GPIOD, GPIO_PinSource14, GPIO_AF_TIM4);// 
-	GPIO_Init(GPIOD, &ledinit_AF3);//
-		
-}
+
 
 
  void USART_2_init(void) //PD6,PD5

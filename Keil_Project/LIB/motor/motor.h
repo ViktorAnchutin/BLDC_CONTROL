@@ -14,7 +14,7 @@
 #define Pole_Pairs 11
 #define Vdc 				12
 #define Pi 3.1415926535897932384
-
+#define CALIBRATION 0
 
 
 
@@ -39,6 +39,7 @@
 void Use_HalfBridge(int num, int Transistor, int power); // num - 1,2,3;  Switch - High or Low; power - duty cycle
 void dead_time(uint32_t time);
 void Set_nRes_nSleep(void);
+void Set_ENx(void);
 void Change_winding(void);
 
 

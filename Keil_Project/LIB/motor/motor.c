@@ -115,6 +115,21 @@ void Set_nRes_nSleep(void)
 }
 
 
+void Set_ENx(void)
+{
+	GPIO_SetBits(GPIOA, GPIO_Pin_1|GPIO_Pin_2|GPIO_Pin_3); // EN1,2,3 to 1 enable all half-bridges
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -136,6 +151,8 @@ float angle_init , error_angle_last, sine_init, cos_init;
 void FOC_InitPosition(void) // establishing zero position, d-axis directed to A winding, theta = 90
 {
 	/*
+	if(CALIBRATION)
+	{
 	Vq=3;
 	
 	Va_1 = arm_cos_f32(0);//cos(theta         );     
@@ -155,19 +172,23 @@ void FOC_InitPosition(void) // establishing zero position, d-axis directed to A 
   TIM4->CCR3 = (uint32_t)(Vinv3*PWM_period/Vdc)  ;
 	
 	myDelay_ms(1000);	
-	*/
+		
+	angle_init = CQ_average_angle();
+		
+	}
+	else
+		
+	{
 	
 	// init angle was calculated once. Now it is used like starting point for electrical angles and engine does not need position initialization
+		
+	angle_init = 238.066;
 	
-	/*
-	angle_init = get_angle()*0.01745329251994329576923690768489 ;//Pi/180; // translating into radians;
-  sine_init = arm_sin_f32(angle_init); 
-	cos_init = arm_cos_f32(angle_init);
-	*/
-	angle_init = 238.066;//CQ_average_angle();//atan2(sine_init, cos_init)*57.295779513082320876798154814105 ;//238.066;//average_angle() ;//get_angle();//average_angle() ;
-	error_angle_last = 0;
-	
+	} */
+
+	angle_init = 238.066;
 }
+	
 
 
 
