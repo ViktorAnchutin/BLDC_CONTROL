@@ -1,4 +1,5 @@
 #BLDC control
+
 -BLDC position control project.
 
 -FOC with no current sensing and sinusoidal commutation algoritms was implemented for posotion control 
