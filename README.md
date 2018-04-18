@@ -10,7 +10,7 @@ Three techniques have been implemented:
 
 Essential elements:
 
- - STM32F407-Discovery
+ - STM32F4-Discovery
  - DRV8313
  - AS5048A
 
