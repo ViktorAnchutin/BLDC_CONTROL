@@ -142,9 +142,9 @@ int main(void)
 		
   des_val = ADC_average*360/4095;
   
-	//angle_error = des_val - angle;
+	angle_error = des_val - angle;
 		
-		angle_error = Roll;
+		//angle_error = Roll;
 		
 	
 	if(mode==0)	FOC(angle, angle_error, 1.1,   0,  0.01,  dt1)	;		
