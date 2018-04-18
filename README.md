@@ -8,3 +8,4 @@
 
 -wiki is in process
 
+![Alt-текст](https://github.com/ViktorAnchutin/BLDC_CONTROL/blob/master/graph/Structure.JPG?raw=true "Заголовок изображения")
