@@ -6,7 +6,8 @@ Three techniques have been implemented:
  - Position control with simplified FOC (no current sensing) - `FOC`
  - Position control with special sinusoidal commutation(vectol angle limitation) - `combined_control_V3`
   
-###Structure###
+ ### Structure ###
+
 Essential elements:
 
  - STM32F407-Discovery
@@ -15,5 +16,5 @@ Essential elements:
 
 ![Alt-текст](https://github.com/ViktorAnchutin/BLDC_CONTROL/blob/master/graph/Structure.JPG?raw=true "Structural scheme")
 
-###Electrical shceme###
+### Electrical shceme ###
 ![Alt-текст](https://github.com/ViktorAnchutin/BLDC_CONTROL/blob/master/graph/El.JPG?raw=true "Electrical scheme")
