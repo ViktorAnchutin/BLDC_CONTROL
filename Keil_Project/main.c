@@ -115,16 +115,36 @@ int main(void)
 		
 	
 
+	/*	
+	if(IMU_data_ready)
+		{
+			
+			Roll_raw = ((float)(IMU_Recieve_Buf[1]<<8|IMU_Recieve_Buf[0]))/32768*PI;	
+			 roll_sine = arm_sin_f32(Roll_raw); 
+				roll_cos = arm_cos_f32(Roll_raw);
+			  Roll = atan2(roll_sine, roll_cos)*57.295779513082320876798154814105 - Roll_cor;
+			
+			
+			
+		}
+			
+		
+		if(!first_ini)
+		{
+			Roll_cor = Roll;
+			first_ini=1;
+		}
+		*/
 		
 		
 		
-	angle = CQ_average_angle();
+	angle = CQ_average_angle();//ThirdOrder_average();//average_angle();//	angle = get_angle();
 		
   des_val = ADC_average*360/4095;
   
 	angle_error = des_val - angle;
 		
-	
+		//angle_error = Roll;
 		
 	
 	if(mode==0)	FOC(angle, angle_error, 1.1,   0,  0.01,  dt1)	;		
