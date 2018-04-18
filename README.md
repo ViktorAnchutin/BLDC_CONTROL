@@ -1,11 +1,19 @@
-#BLDC control
+## BLDC position control project ##
 
--BLDC position control project.
+Three techniques have been implemented:
 
--FOC with no current sensing and sinusoidal commutation algoritms were implemented for posotion control 
+ - Position control with sinusoidal commutation -`sinus_control_V2`
+ - Position control with simplified FOC (no current sensing) - `FOC`
+ - Position control with special sinusoidal commutation(vectol angle limitation) - `combined_control_V3`
+  
+###Structure###
+Essential elements:
 
--Basic elements: DRV8313, AS5048A, STM32F4-Discovery
+ - STM32F407-Discovery
+ - DRV8313
+ - AS5048A
 
--wiki is in process
+![Alt-текст](https://github.com/ViktorAnchutin/BLDC_CONTROL/blob/master/graph/Structure.JPG?raw=true "Structural scheme")
 
-![Alt-текст](https://github.com/ViktorAnchutin/BLDC_CONTROL/blob/master/graph/Structure.JPG?raw=true "Заголовок изображения")
+###Electrical shceme###
+![Alt-текст](https://github.com/ViktorAnchutin/BLDC_CONTROL/blob/master/graph/El.JPG?raw=true "Electrical scheme")
