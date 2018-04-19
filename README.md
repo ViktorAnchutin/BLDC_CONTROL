@@ -16,5 +16,5 @@ Essential elements:
 
 ![Alt-текст](https://github.com/ViktorAnchutin/BLDC_CONTROL/blob/master/graph/Structure.JPG?raw=true "Structural scheme")
 
-### Electrical shceme ###
+### Electrical scheme ###
 ![Alt-текст](https://github.com/ViktorAnchutin/BLDC_CONTROL/blob/master/graph/El.JPG?raw=true "Electrical scheme")
