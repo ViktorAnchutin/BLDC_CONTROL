@@ -44,7 +44,7 @@ uint8_t filled_ADC;
 	uint8_t flag_Roll, started_MPU6050;
   uint32_t sum_Roll;
 	
-	float K_p;
+	float K_p, K_d;
 	
 	
 	
@@ -278,15 +278,15 @@ void TIM1_UP_TIM10_IRQHandler(void)
 			//t1_2 = TIM5->CNT;			
 			angle = CQ_average_angle();
 			//des_val = ADC_average*360/4095;
-				K_p = ADC_average*2/4095;
+				K_d = ADC_average*200/4095;
 			angle_error = des_val - angle;
-			FOC(angle, angle_pitch_gyro, K_p,   0.5,  0.01,  dt1)	;
+			FOC(angle, angle_pitch_gyro, 2.5,   K_d,  0,  dt_1)	;
 		//	dt_2 = TIM5->CNT - t1_2;
 			
 			GPIO_ToggleBits(GPIOB, GPIO_Pin_2);
 			
-		//	dt_1 = TIM5->CNT - t1_1;
-		//	t1_1 = TIM5->CNT;
+			dt_1 = TIM5->CNT - t1_1;
+			t1_1 = TIM5->CNT;
 			}
 		}
 		

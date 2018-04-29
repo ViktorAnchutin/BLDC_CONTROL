@@ -228,10 +228,10 @@ void FOC(float angle, float error_angle, float K_p, float K_d, float K_I, uint32
 		error_angle_last = error_angle;
 		dif_ready=0;
 	}
-	integral = dt*0.000001*error_angle_last+integral;
-	//dif = error_angle - error_angle_last;
-	Vq = K_p*error_angle ;//+ (dif)*K_d ;//+ integral*K_I; //Speed; ////arm_pid_f32(&pid, error_angle);
-	//error_angle_last = error_angle;
+	//integral = dt*0.000001*error_angle_last+integral;
+	dif = (error_angle - error_angle_last)*K_d;
+	Vq = K_p*error_angle + (dif) ;//+ integral*K_I; //Speed; ////arm_pid_f32(&pid, error_angle);
+	error_angle_last = error_angle;
 	
 	
 	
