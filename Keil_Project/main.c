@@ -9,6 +9,22 @@
 #include <stdio.h>
 
 
+#define IMU_I2C      1 
+#define IMU_UART     0            // 0 - MPU I2C tim2, 1- MPU UART
+
+#ifdef IMU_I2C
+	
+	#ifdef IMU_UART
+	#define  IMU_UART  0
+	#endif
+
+#endif
+
+
+
+
+
+
 uint8_t mode;
 float angle, angle_error, angle_test, angle1, angle_error_mem_in1, angle_error_mem_in2, angle_error_mem_in3, angle_error_mem_out1, angle_error_mem_out2, angle_error_mem_out3;
 float des_val,des_val1;
@@ -101,9 +117,14 @@ int main(void)
 	
 {
 	
+	#ifdef IMU_UART
+	
+	USART_2_init();
+	
+	#endif
 	
 	
-	//USART_2_init();
+	
 	SPI3_ini();
 	user_button_init();
 	
@@ -124,10 +145,10 @@ int main(void)
 	
 	
 
+#ifdef IMU_I2C
 
   I2cMaster_Init();
 	mpu_ini();
-
 
 
 
@@ -154,18 +175,17 @@ TIM4->CCR1 = 0  ;
 		TIM4->ARR = 0;
 		myDelay_ms(500);
 		TIM4->ARR = 1400000;
-TIM4->CCR1 = 0 ;		
-		myDelay_ms(3000);
+		myDelay_ms(500);
+		TIM4->ARR = 0;
+		myDelay_ms(500);
+		TIM4->ARR = 1400000;
+		
+    TIM4->CCR1 = 0 ;		
+		myDelay_ms(1000);
 		
 //----------------------		
 		
-		
-			
-			
-			
-			
-			
-			
+	
 			
 	// calculate gyro bias value -------------------------------------------------------------------------------------------------------------		
 			
@@ -223,19 +243,21 @@ TIM4->ARR = PWM_period-1;
 
 //--------
 
-
-
-
+TIM2_ini(); //IMU cycle timer / 1000 microsec
 
 
 ready=1; // ready flag
+
+#endif
+
+
 
 
 
 
 TIM1_ini(); // FOC cycle timer / 100 microsec
 	
-TIM2_ini(); //IMU cycle timer / 1000 microsec
+
 
 
 
@@ -294,7 +316,8 @@ void TIM1_UP_TIM10_IRQHandler(void)
 
 	//-------------------------------------------------------------------------------------
 	
-	
+
+#ifdef IMU_I2C
 	
 	// I2C IMU interrupt --------------------------------------------------------------------------------------------------
 
@@ -326,7 +349,9 @@ void TIM1_UP_TIM10_IRQHandler(void)
  }
 // ------------------------------------------------------------------------------------------------
 
-
+#endif
+ 
+ 
  
 	
 
@@ -381,7 +406,7 @@ void ADC_IRQHandler()
 	
 	
 	
-	
+	#ifdef IMU_UART
 	
 	// USART IMU(100 Hz) interrupt ---------------------------------------------------------------------
 	
@@ -443,7 +468,7 @@ void ADC_IRQHandler()
 }
 
 //-------------------------------------------------------------------------------------------------------------------
-
+#endif
 
 
 

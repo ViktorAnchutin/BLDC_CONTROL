@@ -187,7 +187,18 @@ NVIC_Init(&NVIC_InitStructure);
 	 
 	 USART_Init(USART2, &USART2_user);
 	 
-	 NVIC_EnableIRQ(USART2_IRQn);
+	 
+	 	NVIC_InitTypeDef NVIC_InitStructure2;
+
+NVIC_InitStructure2.NVIC_IRQChannel = USART2_IRQn;
+NVIC_InitStructure2.NVIC_IRQChannelPreemptionPriority = 1;
+NVIC_InitStructure2.NVIC_IRQChannelSubPriority = 0;
+NVIC_InitStructure2.NVIC_IRQChannelCmd = ENABLE;
+NVIC_Init(&NVIC_InitStructure2);
+	 
+	 
+	 
+	 //NVIC_EnableIRQ(USART2_IRQn);
 	 USART_ITConfig(USART2, USART_IT_RXNE, ENABLE);
 	 
 	 
