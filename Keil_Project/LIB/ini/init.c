@@ -6,7 +6,7 @@
 #include "stm32f4xx_usart.h"
 #include "stm32f4xx_exti.h"
 #include "stm32f4xx_syscfg.h"
-
+#include "misc.h"
 
 
 
@@ -133,9 +133,23 @@ void ADC_initt(void) // PB1
 	ADC_CommonStructInit(&ADC_init);
 	ADC_CommonInit (&ADC_init);
 	ADC_Init(ADC1, &ADC_InitStructure);
+	
+	
 	ADC_ITConfig(ADC1, ADC_IT_EOC, ENABLE);
+	
+	
+			NVIC_InitTypeDef NVIC_InitStructure;
+
+NVIC_InitStructure.NVIC_IRQChannel = ADC_IRQn;
+NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 2;
+NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+NVIC_Init(&NVIC_InitStructure);
+	
+	
+	
 	ADC_Cmd(ADC1, ENABLE);
-	NVIC_EnableIRQ(ADC_IRQn);
+//NVIC_EnableIRQ(ADC_IRQn);
 	ADC_RegularChannelConfig(ADC1, ADC_Channel_9, 1, ADC_SampleTime_480Cycles);
 	ADC_SoftwareStartConv(ADC1);
 	
@@ -205,5 +219,83 @@ void user_button_init(void)
 	
 	
 	NVIC_EnableIRQ(EXTI0_IRQn);
+	
+}
+
+
+
+
+
+
+
+
+
+
+void TIM1_ini(void)
+{
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1, ENABLE);
+	
+	TIM_TimeBaseInitTypeDef timer_init;
+	TIM_TimeBaseStructInit(&timer_init);
+	timer_init.TIM_Period = 8400-1;// ---> 100 microsec
+	timer_init.TIM_Prescaler = 2-1; // ---> 42 MHz
+	TIM_TimeBaseInit(TIM1, &timer_init);
+	
+	TIM_ITConfig(TIM1, TIM_IT_Update, ENABLE);
+
+	
+	
+	TIM_Cmd(TIM1, ENABLE);
+	
+	
+	NVIC_InitTypeDef NVIC_InitStructure1;
+
+NVIC_InitStructure1.NVIC_IRQChannel = TIM1_UP_TIM10_IRQn;
+NVIC_InitStructure1.NVIC_IRQChannelPreemptionPriority = 0;
+NVIC_InitStructure1.NVIC_IRQChannelSubPriority = 0;
+NVIC_InitStructure1.NVIC_IRQChannelCmd = ENABLE;
+NVIC_Init(&NVIC_InitStructure1);
+	
+ // NVIC_EnableIRQ(TIM1_UP_TIM10_IRQn );
+	 
+	
+
+	
+	
+	
+}
+
+
+void TIM2_ini(void)
+{
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
+	
+	TIM_TimeBaseInitTypeDef timer2_init;
+	TIM_TimeBaseStructInit(&timer2_init);
+	timer2_init.TIM_Period = 42000-1;// ---> 100 microsec
+	timer2_init.TIM_Prescaler = 2-1; // ---> 42 MHz
+	TIM_TimeBaseInit(TIM2, &timer2_init);
+	
+	TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);
+
+	
+		NVIC_InitTypeDef NVIC_InitStructure;
+
+NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;
+NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
+NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+NVIC_Init(&NVIC_InitStructure);
+	
+	
+	
+	TIM_Cmd(TIM2, ENABLE);
+	
+//  NVIC_EnableIRQ(TIM2_IRQn );
+	 
+	
+
+	
+	
 	
 }

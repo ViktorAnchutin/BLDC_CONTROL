@@ -14,6 +14,13 @@ void myDelay_ms(uint32_t delay);
 
  void USART_2_init(void);
 
+
+void TIM2_ini(void);
+
+void TIM1_ini(void);
+
+
+
 #define PWM_period 2100//3200
 
 

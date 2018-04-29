@@ -28,14 +28,24 @@ Project File Date:  01/30/2018
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
 compiling main.c...
-main.c(85): warning:  #223-D: function "user_button_init" declared implicitly
+main.c(108): warning:  #223-D: function "user_button_init" declared implicitly
   	user_button_init();
-main.c(244): warning:  #1-D: last line of file ends without a newline
+main.c(128): warning:  #223-D: function "I2cMaster_Init" declared implicitly
+    I2cMaster_Init();
+main.c(129): warning:  #223-D: function "mpu_ini" declared implicitly
+  	mpu_ini();
+main.c(179): warning:  #223-D: function "ST_Sensors_I2C_ReadRegister" declared implicitly
+  			ST_Sensors_I2C_ReadRegister(MPU_6050_addr, 0x43, 2, gyro_data );
+main.c(313): warning:  #223-D: function "ST_Sensors_I2C_ReadRegister" declared implicitly
+  			ST_Sensors_I2C_ReadRegister(MPU_6050_addr, 0x43, 2, gyro_data );	
+main.c(316): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  			angle_pitch_gyro += ((gyro_x_1)/16.4)*0.001;	
+main.c(457): warning:  #1-D: last line of file ends without a newline
   	
-main.c: 2 warnings, 0 errors
+main.c: 7 warnings, 0 errors
 linking...
-Program Size: Code=17452 RO-data=2636 RW-data=508 ZI-data=62076  
-".\Objects\SPI_FOC.axf" - 0 Error(s), 2 Warning(s).
+Program Size: Code=17676 RO-data=2636 RW-data=640 ZI-data=62080  
+".\Objects\SPI_FOC.axf" - 0 Error(s), 7 Warning(s).
 
 <h2>Software Packages used:</h2>
 

@@ -150,7 +150,7 @@ float angle_init , error_angle_last, sine_init, cos_init;
 
 void FOC_InitPosition(void) // establishing zero position, d-axis directed to A winding, theta = 90
 {
-	/*
+	
 	if(CALIBRATION)
 	{
 	Vq=3;
@@ -184,15 +184,15 @@ void FOC_InitPosition(void) // establishing zero position, d-axis directed to A 
 		
 	angle_init = 238.066;
 	
-	} */
+	} 
 
-	angle_init = 238.066;
+	
 }
 	
 
-
-
-float error_in_proc, er_mem, angle_mem,integral;
+extern uint8_t dif_ready;
+ float dif;
+float error_in_proc, er_mem, angle_mem,integral ;
 
 void FOC(float angle, float error_angle, float K_p, float K_d, float K_I, uint32_t dt)
 {
@@ -220,9 +220,18 @@ void FOC(float angle, float error_angle, float K_p, float K_d, float K_I, uint32
 		er_mem = error_angle;
 		angle_mem = angle;
 	}
+	
+	
+		if(dif_ready)
+	{
+		dif = error_angle - error_angle_last;
+		error_angle_last = error_angle;
+		dif_ready=0;
+	}
 	integral = dt*0.000001*error_angle_last+integral;
-	Vq = K_p*error_angle ;//+ ((error_angle - error_angle_last)/(dt*0.000001))*K_d + integral*K_I; //Speed; //
-	error_angle_last = error_angle;
+	//dif = error_angle - error_angle_last;
+	Vq = K_p*error_angle ;//+ (dif)*K_d ;//+ integral*K_I; //Speed; ////arm_pid_f32(&pid, error_angle);
+	//error_angle_last = error_angle;
 	
 	
 	
