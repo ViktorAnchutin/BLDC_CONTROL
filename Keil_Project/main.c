@@ -302,7 +302,7 @@ void TIM1_UP_TIM10_IRQHandler(void)
 			//des_val = ADC_average*360/4095;
 				K_d = ADC_average*200/4095;
 			angle_error = des_val - angle;
-			FOC(angle, angle_pitch_gyro, 2.5,   K_d,  0,  dt_1)	;
+			FOC(angle, -angle_pitch_gyro, 2.5,   K_d,  0,  dt_1)	;
 		//	dt_2 = TIM5->CNT - t1_2;
 			
 			GPIO_ToggleBits(GPIOB, GPIO_Pin_2);

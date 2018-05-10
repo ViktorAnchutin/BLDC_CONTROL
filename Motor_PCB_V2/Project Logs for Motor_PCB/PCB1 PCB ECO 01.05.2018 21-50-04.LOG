@@ -1,0 +1,11 @@
+Change Component Comment : Designator=X? Old Comment=LM2596S_PCB New Comment=*
+Change Component Comment : Designator=X1 Old Comment=STM32F4_Discovery_P1 New Comment=*
+Change Component Comment : Designator=X2 Old Comment=STM32F4_Discovery_P2 New Comment=*
+Added Component: Designator=X?(I2C input)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=+5V Pin=X?-1
+Added Pin To Net: NetName=GND Pin=X?-2
+Added Pin To Net: NetName=SCL Pin=X?-3
+Added Pin To Net: NetName=SDA Pin=X?-4
+Added Member To Class: ClassName=Sheet1 Member=Component X? *
+Added Room: Name=Sheet1

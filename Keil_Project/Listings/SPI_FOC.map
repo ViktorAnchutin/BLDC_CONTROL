@@ -1908,31 +1908,31 @@ Image Symbol Table
     i.Set_nRes_nSleep                        0x08001c94   Section        0  motor.o(i.Set_nRes_nSleep)
     i.SystemInit                             0x08001ca4   Section        0  system_stm32f4xx.o(i.SystemInit)
     i.TIM1_UP_TIM10_IRQHandler               0x08001d0c   Section        0  main.o(i.TIM1_UP_TIM10_IRQHandler)
-    i.TIM1_ini                               0x08001de4   Section        0  init.o(i.TIM1_ini)
-    i.TIM2_IRQHandler                        0x08001e3c   Section        0  main.o(i.TIM2_IRQHandler)
-    i.TIM2_ini                               0x08001f50   Section        0  init.o(i.TIM2_ini)
-    i.TIM4_ini                               0x08001fa8   Section        0  init.o(i.TIM4_ini)
-    i.TIM5_ini                               0x08002038   Section        0  mylib.o(i.TIM5_ini)
-    i.TIM_ClearITPendingBit                  0x08002074   Section        0  stm32f4xx_tim.o(i.TIM_ClearITPendingBit)
-    i.TIM_Cmd                                0x0800207a   Section        0  stm32f4xx_tim.o(i.TIM_Cmd)
-    i.TIM_GetITStatus                        0x08002092   Section        0  stm32f4xx_tim.o(i.TIM_GetITStatus)
-    i.TIM_ITConfig                           0x080020b4   Section        0  stm32f4xx_tim.o(i.TIM_ITConfig)
-    i.TIM_OC1Init                            0x080020c8   Section        0  stm32f4xx_tim.o(i.TIM_OC1Init)
-    i.TIM_OC2Init                            0x08002144   Section        0  stm32f4xx_tim.o(i.TIM_OC2Init)
-    i.TIM_OC3Init                            0x080021e8   Section        0  stm32f4xx_tim.o(i.TIM_OC3Init)
-    i.TIM_OCStructInit                       0x08002288   Section        0  stm32f4xx_tim.o(i.TIM_OCStructInit)
-    i.TIM_TimeBaseInit                       0x0800229c   Section        0  stm32f4xx_tim.o(i.TIM_TimeBaseInit)
-    i.TIM_TimeBaseStructInit                 0x08002320   Section        0  stm32f4xx_tim.o(i.TIM_TimeBaseStructInit)
-    i.USART2_IRQHandler                      0x08002334   Section        0  main.o(i.USART2_IRQHandler)
-    i.USART_2_init                           0x080023fc   Section        0  init.o(i.USART_2_init)
-    i.USART_ClearITPendingBit                0x080024ac   Section        0  stm32f4xx_usart.o(i.USART_ClearITPendingBit)
-    i.USART_Cmd                              0x080024ca   Section        0  stm32f4xx_usart.o(i.USART_Cmd)
-    i.USART_GetITStatus                      0x080024e2   Section        0  stm32f4xx_usart.o(i.USART_GetITStatus)
-    i.USART_ITConfig                         0x08002536   Section        0  stm32f4xx_usart.o(i.USART_ITConfig)
-    i.USART_Init                             0x08002580   Section        0  stm32f4xx_usart.o(i.USART_Init)
-    i.USART_ReceiveData                      0x08002654   Section        0  stm32f4xx_usart.o(i.USART_ReceiveData)
-    i.WAIT_FOR_FLAG                          0x08002660   Section        0  mylib.o(i.WAIT_FOR_FLAG)
-    i.__ARM_fpclassify                       0x0800267c   Section        0  fpclassify.o(i.__ARM_fpclassify)
+    i.TIM1_ini                               0x08001de8   Section        0  init.o(i.TIM1_ini)
+    i.TIM2_IRQHandler                        0x08001e40   Section        0  main.o(i.TIM2_IRQHandler)
+    i.TIM2_ini                               0x08001f54   Section        0  init.o(i.TIM2_ini)
+    i.TIM4_ini                               0x08001fac   Section        0  init.o(i.TIM4_ini)
+    i.TIM5_ini                               0x0800203c   Section        0  mylib.o(i.TIM5_ini)
+    i.TIM_ClearITPendingBit                  0x08002078   Section        0  stm32f4xx_tim.o(i.TIM_ClearITPendingBit)
+    i.TIM_Cmd                                0x0800207e   Section        0  stm32f4xx_tim.o(i.TIM_Cmd)
+    i.TIM_GetITStatus                        0x08002096   Section        0  stm32f4xx_tim.o(i.TIM_GetITStatus)
+    i.TIM_ITConfig                           0x080020b8   Section        0  stm32f4xx_tim.o(i.TIM_ITConfig)
+    i.TIM_OC1Init                            0x080020cc   Section        0  stm32f4xx_tim.o(i.TIM_OC1Init)
+    i.TIM_OC2Init                            0x08002148   Section        0  stm32f4xx_tim.o(i.TIM_OC2Init)
+    i.TIM_OC3Init                            0x080021ec   Section        0  stm32f4xx_tim.o(i.TIM_OC3Init)
+    i.TIM_OCStructInit                       0x0800228c   Section        0  stm32f4xx_tim.o(i.TIM_OCStructInit)
+    i.TIM_TimeBaseInit                       0x080022a0   Section        0  stm32f4xx_tim.o(i.TIM_TimeBaseInit)
+    i.TIM_TimeBaseStructInit                 0x08002324   Section        0  stm32f4xx_tim.o(i.TIM_TimeBaseStructInit)
+    i.USART2_IRQHandler                      0x08002338   Section        0  main.o(i.USART2_IRQHandler)
+    i.USART_2_init                           0x08002400   Section        0  init.o(i.USART_2_init)
+    i.USART_ClearITPendingBit                0x080024b0   Section        0  stm32f4xx_usart.o(i.USART_ClearITPendingBit)
+    i.USART_Cmd                              0x080024ce   Section        0  stm32f4xx_usart.o(i.USART_Cmd)
+    i.USART_GetITStatus                      0x080024e6   Section        0  stm32f4xx_usart.o(i.USART_GetITStatus)
+    i.USART_ITConfig                         0x0800253a   Section        0  stm32f4xx_usart.o(i.USART_ITConfig)
+    i.USART_Init                             0x08002584   Section        0  stm32f4xx_usart.o(i.USART_Init)
+    i.USART_ReceiveData                      0x08002658   Section        0  stm32f4xx_usart.o(i.USART_ReceiveData)
+    i.WAIT_FOR_FLAG                          0x08002664   Section        0  mylib.o(i.WAIT_FOR_FLAG)
+    i.__ARM_fpclassify                       0x08002680   Section        0  fpclassify.o(i.__ARM_fpclassify)
     i.__hardfp_atan                          0x080026b0   Section        0  atan.o(i.__hardfp_atan)
     i.__hardfp_atan2                         0x08002988   Section        0  atan2.o(i.__hardfp_atan2)
     i.__kernel_poly                          0x08002b78   Section        0  poly.o(i.__kernel_poly)
@@ -2273,32 +2273,32 @@ Image Symbol Table
     Set_ENx                                  0x08001c85   Thumb Code    12  motor.o(i.Set_ENx)
     Set_nRes_nSleep                          0x08001c95   Thumb Code    12  motor.o(i.Set_nRes_nSleep)
     SystemInit                               0x08001ca5   Thumb Code    88  system_stm32f4xx.o(i.SystemInit)
-    TIM1_UP_TIM10_IRQHandler                 0x08001d0d   Thumb Code   156  main.o(i.TIM1_UP_TIM10_IRQHandler)
-    TIM1_ini                                 0x08001de5   Thumb Code    84  init.o(i.TIM1_ini)
-    TIM2_IRQHandler                          0x08001e3d   Thumb Code   216  main.o(i.TIM2_IRQHandler)
-    TIM2_ini                                 0x08001f51   Thumb Code    86  init.o(i.TIM2_ini)
-    TIM4_ini                                 0x08001fa9   Thumb Code   140  init.o(i.TIM4_ini)
-    TIM5_ini                                 0x08002039   Thumb Code    54  mylib.o(i.TIM5_ini)
-    TIM_ClearITPendingBit                    0x08002075   Thumb Code     6  stm32f4xx_tim.o(i.TIM_ClearITPendingBit)
-    TIM_Cmd                                  0x0800207b   Thumb Code    24  stm32f4xx_tim.o(i.TIM_Cmd)
-    TIM_GetITStatus                          0x08002093   Thumb Code    34  stm32f4xx_tim.o(i.TIM_GetITStatus)
-    TIM_ITConfig                             0x080020b5   Thumb Code    18  stm32f4xx_tim.o(i.TIM_ITConfig)
-    TIM_OC1Init                              0x080020c9   Thumb Code   114  stm32f4xx_tim.o(i.TIM_OC1Init)
-    TIM_OC2Init                              0x08002145   Thumb Code   154  stm32f4xx_tim.o(i.TIM_OC2Init)
-    TIM_OC3Init                              0x080021e9   Thumb Code   150  stm32f4xx_tim.o(i.TIM_OC3Init)
-    TIM_OCStructInit                         0x08002289   Thumb Code    20  stm32f4xx_tim.o(i.TIM_OCStructInit)
-    TIM_TimeBaseInit                         0x0800229d   Thumb Code   104  stm32f4xx_tim.o(i.TIM_TimeBaseInit)
-    TIM_TimeBaseStructInit                   0x08002321   Thumb Code    18  stm32f4xx_tim.o(i.TIM_TimeBaseStructInit)
-    USART2_IRQHandler                        0x08002335   Thumb Code   174  main.o(i.USART2_IRQHandler)
-    USART_2_init                             0x080023fd   Thumb Code   168  init.o(i.USART_2_init)
-    USART_ClearITPendingBit                  0x080024ad   Thumb Code    30  stm32f4xx_usart.o(i.USART_ClearITPendingBit)
-    USART_Cmd                                0x080024cb   Thumb Code    24  stm32f4xx_usart.o(i.USART_Cmd)
-    USART_GetITStatus                        0x080024e3   Thumb Code    84  stm32f4xx_usart.o(i.USART_GetITStatus)
-    USART_ITConfig                           0x08002537   Thumb Code    74  stm32f4xx_usart.o(i.USART_ITConfig)
-    USART_Init                               0x08002581   Thumb Code   204  stm32f4xx_usart.o(i.USART_Init)
-    USART_ReceiveData                        0x08002655   Thumb Code    10  stm32f4xx_usart.o(i.USART_ReceiveData)
-    WAIT_FOR_FLAG                            0x08002661   Thumb Code    22  mylib.o(i.WAIT_FOR_FLAG)
-    __ARM_fpclassify                         0x0800267d   Thumb Code    48  fpclassify.o(i.__ARM_fpclassify)
+    TIM1_UP_TIM10_IRQHandler                 0x08001d0d   Thumb Code   160  main.o(i.TIM1_UP_TIM10_IRQHandler)
+    TIM1_ini                                 0x08001de9   Thumb Code    84  init.o(i.TIM1_ini)
+    TIM2_IRQHandler                          0x08001e41   Thumb Code   216  main.o(i.TIM2_IRQHandler)
+    TIM2_ini                                 0x08001f55   Thumb Code    86  init.o(i.TIM2_ini)
+    TIM4_ini                                 0x08001fad   Thumb Code   140  init.o(i.TIM4_ini)
+    TIM5_ini                                 0x0800203d   Thumb Code    54  mylib.o(i.TIM5_ini)
+    TIM_ClearITPendingBit                    0x08002079   Thumb Code     6  stm32f4xx_tim.o(i.TIM_ClearITPendingBit)
+    TIM_Cmd                                  0x0800207f   Thumb Code    24  stm32f4xx_tim.o(i.TIM_Cmd)
+    TIM_GetITStatus                          0x08002097   Thumb Code    34  stm32f4xx_tim.o(i.TIM_GetITStatus)
+    TIM_ITConfig                             0x080020b9   Thumb Code    18  stm32f4xx_tim.o(i.TIM_ITConfig)
+    TIM_OC1Init                              0x080020cd   Thumb Code   114  stm32f4xx_tim.o(i.TIM_OC1Init)
+    TIM_OC2Init                              0x08002149   Thumb Code   154  stm32f4xx_tim.o(i.TIM_OC2Init)
+    TIM_OC3Init                              0x080021ed   Thumb Code   150  stm32f4xx_tim.o(i.TIM_OC3Init)
+    TIM_OCStructInit                         0x0800228d   Thumb Code    20  stm32f4xx_tim.o(i.TIM_OCStructInit)
+    TIM_TimeBaseInit                         0x080022a1   Thumb Code   104  stm32f4xx_tim.o(i.TIM_TimeBaseInit)
+    TIM_TimeBaseStructInit                   0x08002325   Thumb Code    18  stm32f4xx_tim.o(i.TIM_TimeBaseStructInit)
+    USART2_IRQHandler                        0x08002339   Thumb Code   174  main.o(i.USART2_IRQHandler)
+    USART_2_init                             0x08002401   Thumb Code   168  init.o(i.USART_2_init)
+    USART_ClearITPendingBit                  0x080024b1   Thumb Code    30  stm32f4xx_usart.o(i.USART_ClearITPendingBit)
+    USART_Cmd                                0x080024cf   Thumb Code    24  stm32f4xx_usart.o(i.USART_Cmd)
+    USART_GetITStatus                        0x080024e7   Thumb Code    84  stm32f4xx_usart.o(i.USART_GetITStatus)
+    USART_ITConfig                           0x0800253b   Thumb Code    74  stm32f4xx_usart.o(i.USART_ITConfig)
+    USART_Init                               0x08002585   Thumb Code   204  stm32f4xx_usart.o(i.USART_Init)
+    USART_ReceiveData                        0x08002659   Thumb Code    10  stm32f4xx_usart.o(i.USART_ReceiveData)
+    WAIT_FOR_FLAG                            0x08002665   Thumb Code    22  mylib.o(i.WAIT_FOR_FLAG)
+    __ARM_fpclassify                         0x08002681   Thumb Code    48  fpclassify.o(i.__ARM_fpclassify)
     __hardfp_atan                            0x080026b1   Thumb Code   622  atan.o(i.__hardfp_atan)
     __hardfp_atan2                           0x08002989   Thumb Code   432  atan2.o(i.__hardfp_atan2)
     __kernel_poly                            0x08002b79   Thumb Code   248  poly.o(i.__kernel_poly)
@@ -2690,37 +2690,36 @@ Memory Map of the image
     0x08001c84   0x08001c84   0x00000010   Code   RO          457    i.Set_ENx           motor.o
     0x08001c94   0x08001c94   0x00000010   Code   RO          458    i.Set_nRes_nSleep   motor.o
     0x08001ca4   0x08001ca4   0x00000068   Code   RO         5794    i.SystemInit        system_stm32f4xx.o
-    0x08001d0c   0x08001d0c   0x000000d8   Code   RO            6    i.TIM1_UP_TIM10_IRQHandler  main.o
-    0x08001de4   0x08001de4   0x00000058   Code   RO          385    i.TIM1_ini          init.o
-    0x08001e3c   0x08001e3c   0x00000114   Code   RO            7    i.TIM2_IRQHandler   main.o
-    0x08001f50   0x08001f50   0x00000056   Code   RO          386    i.TIM2_ini          init.o
-    0x08001fa6   0x08001fa6   0x00000002   PAD
-    0x08001fa8   0x08001fa8   0x00000090   Code   RO          387    i.TIM4_ini          init.o
-    0x08002038   0x08002038   0x0000003c   Code   RO          196    i.TIM5_ini          mylib.o
-    0x08002074   0x08002074   0x00000006   Code   RO         4887    i.TIM_ClearITPendingBit  stm32f4xx_tim.o
-    0x0800207a   0x0800207a   0x00000018   Code   RO         4892    i.TIM_Cmd           stm32f4xx_tim.o
-    0x08002092   0x08002092   0x00000022   Code   RO         4913    i.TIM_GetITStatus   stm32f4xx_tim.o
-    0x080020b4   0x080020b4   0x00000012   Code   RO         4917    i.TIM_ITConfig      stm32f4xx_tim.o
-    0x080020c6   0x080020c6   0x00000002   PAD
-    0x080020c8   0x080020c8   0x0000007c   Code   RO         4921    i.TIM_OC1Init       stm32f4xx_tim.o
-    0x08002144   0x08002144   0x000000a4   Code   RO         4926    i.TIM_OC2Init       stm32f4xx_tim.o
-    0x080021e8   0x080021e8   0x000000a0   Code   RO         4931    i.TIM_OC3Init       stm32f4xx_tim.o
-    0x08002288   0x08002288   0x00000014   Code   RO         4939    i.TIM_OCStructInit  stm32f4xx_tim.o
-    0x0800229c   0x0800229c   0x00000084   Code   RO         4964    i.TIM_TimeBaseInit  stm32f4xx_tim.o
-    0x08002320   0x08002320   0x00000012   Code   RO         4965    i.TIM_TimeBaseStructInit  stm32f4xx_tim.o
-    0x08002332   0x08002332   0x00000002   PAD
-    0x08002334   0x08002334   0x000000c8   Code   RO            8    i.USART2_IRQHandler  main.o
-    0x080023fc   0x080023fc   0x000000b0   Code   RO          388    i.USART_2_init      init.o
-    0x080024ac   0x080024ac   0x0000001e   Code   RO         5446    i.USART_ClearITPendingBit  stm32f4xx_usart.o
-    0x080024ca   0x080024ca   0x00000018   Code   RO         5449    i.USART_Cmd         stm32f4xx_usart.o
-    0x080024e2   0x080024e2   0x00000054   Code   RO         5453    i.USART_GetITStatus  stm32f4xx_usart.o
-    0x08002536   0x08002536   0x0000004a   Code   RO         5455    i.USART_ITConfig    stm32f4xx_usart.o
-    0x08002580   0x08002580   0x000000d4   Code   RO         5456    i.USART_Init        stm32f4xx_usart.o
-    0x08002654   0x08002654   0x0000000a   Code   RO         5463    i.USART_ReceiveData  stm32f4xx_usart.o
-    0x0800265e   0x0800265e   0x00000002   PAD
-    0x08002660   0x08002660   0x0000001c   Code   RO          198    i.WAIT_FOR_FLAG     mylib.o
-    0x0800267c   0x0800267c   0x00000030   Code   RO         6172    i.__ARM_fpclassify  m_wm.l(fpclassify.o)
-    0x080026ac   0x080026ac   0x00000004   PAD
+    0x08001d0c   0x08001d0c   0x000000dc   Code   RO            6    i.TIM1_UP_TIM10_IRQHandler  main.o
+    0x08001de8   0x08001de8   0x00000058   Code   RO          385    i.TIM1_ini          init.o
+    0x08001e40   0x08001e40   0x00000114   Code   RO            7    i.TIM2_IRQHandler   main.o
+    0x08001f54   0x08001f54   0x00000056   Code   RO          386    i.TIM2_ini          init.o
+    0x08001faa   0x08001faa   0x00000002   PAD
+    0x08001fac   0x08001fac   0x00000090   Code   RO          387    i.TIM4_ini          init.o
+    0x0800203c   0x0800203c   0x0000003c   Code   RO          196    i.TIM5_ini          mylib.o
+    0x08002078   0x08002078   0x00000006   Code   RO         4887    i.TIM_ClearITPendingBit  stm32f4xx_tim.o
+    0x0800207e   0x0800207e   0x00000018   Code   RO         4892    i.TIM_Cmd           stm32f4xx_tim.o
+    0x08002096   0x08002096   0x00000022   Code   RO         4913    i.TIM_GetITStatus   stm32f4xx_tim.o
+    0x080020b8   0x080020b8   0x00000012   Code   RO         4917    i.TIM_ITConfig      stm32f4xx_tim.o
+    0x080020ca   0x080020ca   0x00000002   PAD
+    0x080020cc   0x080020cc   0x0000007c   Code   RO         4921    i.TIM_OC1Init       stm32f4xx_tim.o
+    0x08002148   0x08002148   0x000000a4   Code   RO         4926    i.TIM_OC2Init       stm32f4xx_tim.o
+    0x080021ec   0x080021ec   0x000000a0   Code   RO         4931    i.TIM_OC3Init       stm32f4xx_tim.o
+    0x0800228c   0x0800228c   0x00000014   Code   RO         4939    i.TIM_OCStructInit  stm32f4xx_tim.o
+    0x080022a0   0x080022a0   0x00000084   Code   RO         4964    i.TIM_TimeBaseInit  stm32f4xx_tim.o
+    0x08002324   0x08002324   0x00000012   Code   RO         4965    i.TIM_TimeBaseStructInit  stm32f4xx_tim.o
+    0x08002336   0x08002336   0x00000002   PAD
+    0x08002338   0x08002338   0x000000c8   Code   RO            8    i.USART2_IRQHandler  main.o
+    0x08002400   0x08002400   0x000000b0   Code   RO          388    i.USART_2_init      init.o
+    0x080024b0   0x080024b0   0x0000001e   Code   RO         5446    i.USART_ClearITPendingBit  stm32f4xx_usart.o
+    0x080024ce   0x080024ce   0x00000018   Code   RO         5449    i.USART_Cmd         stm32f4xx_usart.o
+    0x080024e6   0x080024e6   0x00000054   Code   RO         5453    i.USART_GetITStatus  stm32f4xx_usart.o
+    0x0800253a   0x0800253a   0x0000004a   Code   RO         5455    i.USART_ITConfig    stm32f4xx_usart.o
+    0x08002584   0x08002584   0x000000d4   Code   RO         5456    i.USART_Init        stm32f4xx_usart.o
+    0x08002658   0x08002658   0x0000000a   Code   RO         5463    i.USART_ReceiveData  stm32f4xx_usart.o
+    0x08002662   0x08002662   0x00000002   PAD
+    0x08002664   0x08002664   0x0000001c   Code   RO          198    i.WAIT_FOR_FLAG     mylib.o
+    0x08002680   0x08002680   0x00000030   Code   RO         6172    i.__ARM_fpclassify  m_wm.l(fpclassify.o)
     0x080026b0   0x080026b0   0x000002d8   Code   RO         6113    i.__hardfp_atan     m_wm.l(atan.o)
     0x08002988   0x08002988   0x000001f0   Code   RO         6077    i.__hardfp_atan2    m_wm.l(atan2.o)
     0x08002b78   0x08002b78   0x000000f8   Code   RO         6174    i.__kernel_poly     m_wm.l(poly.o)
@@ -2797,7 +2796,7 @@ Image component sizes
 
       1280        124          0        120       2400      11095   as5048.o
        934         40          0          0          0      34476   init.o
-      1392        226          0        380      58044     330951   main.o
+      1396        226          0        380      58044     330951   main.o
        120         14          0          0          0       2636   misc.o
       1220        208          0        108          0       3491   motor.o
       1372         68          0         20          0      51093   mylib.o
@@ -2816,7 +2815,7 @@ Image component sizes
        340         32          0          0          0       1765   system_stm32f4xx.o
 
     ----------------------------------------------------------------------
-      9886        918        424        644      61980     816078   Object Totals
+      9890        918        424        644      61980     816078   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         20          0          0          0          0          0   (incl. Padding)
 
@@ -2881,8 +2880,8 @@ Image component sizes
          0          0          8          0          0          0   qnan.o
 
     ----------------------------------------------------------------------
-      8222        606       2212          0         96      28120   Library Totals
-        16          0          0          0          0          0   (incl. Padding)
+      8218        606       2212          0         96      28120   Library Totals
+        12          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -2894,7 +2893,7 @@ Image component sizes
       1632        178        160          0          0       1316   m_wm.l
 
     ----------------------------------------------------------------------
-      8222        606       2212          0         96      28120   Library Totals
+      8218        606       2212          0         96      28120   Library Totals
 
     ----------------------------------------------------------------------
 

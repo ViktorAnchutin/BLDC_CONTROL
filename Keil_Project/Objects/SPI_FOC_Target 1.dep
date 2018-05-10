@@ -1,5 +1,5 @@
 Dependencies for Project 'SPI_FOC', Target 'Target 1': (DO NOT MODIFY !)
-F (.\main.c)(0x5AE62157)(--c99 -c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\LIB\SPL\src -I .\LIB\SPL\inc -I .\LIB\SPL\src -I .\LIB -I .\LIB\as5048 -I .\LIB\ini -I .\LIB\motor-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F407xx -DARM_MATH_CM4-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\main.c)(0x5AEABE80)(--c99 -c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\LIB\SPL\src -I .\LIB\SPL\inc -I .\LIB\SPL\src -I .\LIB -I .\LIB\as5048 -I .\LIB\ini -I .\LIB\motor-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F407xx -DARM_MATH_CM4-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (.\LIB\stm32f4xx.h)(0x59C36AC7)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm4.h)(0x589881CA)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BBB84)
