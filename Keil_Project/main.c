@@ -287,7 +287,7 @@ TIM1_ini(); // FOC cycle timer / 100 microsec
 
 
 
-// FOC interrupt ---------------------------------------------------------------
+// FOC TIM1 interrupt ---------------------------------------------------------------
 
 void TIM1_UP_TIM10_IRQHandler(void)
 {
@@ -297,18 +297,19 @@ void TIM1_UP_TIM10_IRQHandler(void)
 			
 			if(ready)
 			{
+				t1_1 = TIM5->CNT;
 			//t1_2 = TIM5->CNT;			
 			angle = CQ_average_angle();
 			//des_val = ADC_average*360/4095;
-				K_d = ADC_average*200/4095;
+			//	K_d = ADC_average*200/4095;
 			angle_error = des_val - angle;
-			FOC(angle, -angle_pitch_gyro, 2.5,   K_d,  0,  dt_1)	;
+			FOC(angle, -angle_pitch_gyro, 2.5,   300,  0,  dt_1)	;
 		//	dt_2 = TIM5->CNT - t1_2;
 			
 			GPIO_ToggleBits(GPIOB, GPIO_Pin_2);
 			
 			dt_1 = TIM5->CNT - t1_1;
-			t1_1 = TIM5->CNT;
+			
 			}
 		}
 		
@@ -319,19 +320,19 @@ void TIM1_UP_TIM10_IRQHandler(void)
 
 #ifdef IMU_I2C
 	
-	// I2C IMU interrupt --------------------------------------------------------------------------------------------------
+	// I2C IMU TIM2 interrupt --------------------------------------------------------------------------------------------------
 
  void TIM2_IRQHandler(void)
  {
 	 if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET) {		
 			
 			TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
-			
-		 cnt++;
+						
+		 //cnt++;
 		 
 			if(started_MPU6050)
 			{
-			t1_3 = TIM5->CNT;			
+			
 		
 			ST_Sensors_I2C_ReadRegister(MPU_6050_addr, 0x43, 2, gyro_data );	
 			gyro_x = (uint16_t)gyro_data[0]<<8 | (uint16_t)gyro_data[1];	

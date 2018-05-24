@@ -1,0 +1,12 @@
+Added Component: Designator=X?(Potentiometr)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=GND Pin=X?-3
+Added Pin To Net: NetName=3V Pin=X1-4
+Added Pin To Net: NetName=3V Pin=X?-1
+Added Net: Name=3V
+Added Pin To Net: NetName=Sig Pin=X1-18
+Added Pin To Net: NetName=Sig Pin=X?-2
+Added Net: Name=Sig
+Added Member To Class: ClassName=Sheet1 Member=Component X? Potentiometr
+Added Member To Class: ClassName=Sheet1 Member=Component X? *
+Added Room: Name=Sheet1

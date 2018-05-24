@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\SPI_FOC.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\SPI_FOC.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Thu May 03 10:47:19 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Thu May 24 17:57:39 2018
 <BR><P>
 <H3>Maximum Stack Usage =        216 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1089,7 +1089,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(.text)
 </UL>
-<P><STRONG><a name="[25]"></a>TIM1_UP_TIM10_IRQHandler</STRONG> (Thumb, 160 bytes, Stack size 8 bytes, main.o(i.TIM1_UP_TIM10_IRQHandler))
+<P><STRONG><a name="[25]"></a>TIM1_UP_TIM10_IRQHandler</STRONG> (Thumb, 126 bytes, Stack size 8 bytes, main.o(i.TIM1_UP_TIM10_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = TIM1_UP_TIM10_IRQHandler &rArr; CQ_average_angle &rArr; __hardfp_atan2 &rArr; atan &rArr; __hardfp_atan &rArr; __kernel_poly &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetITStatus
@@ -1113,7 +1113,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[28]"></a>TIM2_IRQHandler</STRONG> (Thumb, 216 bytes, Stack size 48 bytes, main.o(i.TIM2_IRQHandler))
+<P><STRONG><a name="[28]"></a>TIM2_IRQHandler</STRONG> (Thumb, 198 bytes, Stack size 48 bytes, main.o(i.TIM2_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 108<LI>Call Chain = TIM2_IRQHandler &rArr; ST_Sensors_I2C_ReadRegister &rArr; WAIT_FOR_FLAG &rArr; I2C_GetFlagStatus
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetITStatus

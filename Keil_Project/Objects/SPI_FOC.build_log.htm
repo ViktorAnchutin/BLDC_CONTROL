@@ -36,15 +36,15 @@ main.c(151): warning:  #223-D: function "mpu_ini" declared implicitly
   	mpu_ini();
 main.c(199): warning:  #223-D: function "ST_Sensors_I2C_ReadRegister" declared implicitly
   			ST_Sensors_I2C_ReadRegister(MPU_6050_addr, 0x43, 2, gyro_data );
-main.c(336): warning:  #223-D: function "ST_Sensors_I2C_ReadRegister" declared implicitly
+main.c(337): warning:  #223-D: function "ST_Sensors_I2C_ReadRegister" declared implicitly
   			ST_Sensors_I2C_ReadRegister(MPU_6050_addr, 0x43, 2, gyro_data );	
-main.c(339): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+main.c(340): warning:  #1035-D: single-precision operand implicitly converted to double-precision
   			angle_pitch_gyro += ((gyro_x_1)/16.4)*0.001;	
-main.c(482): warning:  #1-D: last line of file ends without a newline
+main.c(483): warning:  #1-D: last line of file ends without a newline
   	
 main.c: 7 warnings, 0 errors
 linking...
-Program Size: Code=18108 RO-data=2636 RW-data=644 ZI-data=62076  
+Program Size: Code=18044 RO-data=2636 RW-data=644 ZI-data=62076  
 ".\Objects\SPI_FOC.axf" - 0 Error(s), 7 Warning(s).
 
 <h2>Software Packages used:</h2>
@@ -81,7 +81,7 @@ Package Vendor: Keil
       Library file:  CMSIS\Lib\ARM\arm_cortexM4lf_math.lib
 
    * Component: ARM::CMSIS:CORE:5.0.1
-Build Time Elapsed:  00:00:07
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

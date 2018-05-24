@@ -1,0 +1,13 @@
+Added Component: Designator=X?(LM2596S_PCB)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=12V Pin=X?-1
+Added Pin To Net: NetName=+5V Pin=X?-1
+Added Pin To Net: NetName=GND Pin=X?-2
+Added Pin To Net: NetName=GND Pin=X?-2
+Added Pin To Net: NetName=+5V Pin=X?-3
+Added Pin To Net: NetName=SCL Pin=X?-3
+Added Pin To Net: NetName=GND Pin=X?-4
+Added Pin To Net: NetName=SDA Pin=X?-4
+Added Member To Class: ClassName=Sheet1 Member=Component X? I2C input
+Added Member To Class: ClassName=Sheet1 Member=Component X? LM2596S_PCB
+Added Room: Name=Sheet1

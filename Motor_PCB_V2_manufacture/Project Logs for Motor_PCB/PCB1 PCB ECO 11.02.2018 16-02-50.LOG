@@ -1,0 +1,54 @@
+Added Component: Designator=A1(XL4050_PCB)
+Add component. Clean all parameters for all variants
+Added Component: Designator=X1(STM32F4Discovery_P)
+Add component. Clean all parameters for all variants
+Added Component: Designator=X2(STM32F4Discovery_P)
+Add component. Clean all parameters for all variants
+Added Component: Designator=X5(AS5048A_input)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=+5V Pin=X2-4
+Added Pin To Net: NetName=+5V Pin=X5-1
+Added Net: Name=+5V
+Added Net: Name=12V
+Added Pin To Net: NetName=CS Pin=X2-46
+Added Pin To Net: NetName=CS Pin=X5-3
+Added Net: Name=CS
+Added Pin To Net: NetName=EN1 Pin=X1-11
+Added Net: Name=EN1
+Added Pin To Net: NetName=EN2 Pin=X1-14
+Added Net: Name=EN2
+Added Pin To Net: NetName=EN3 Pin=X1-13
+Added Net: Name=EN3
+Added Pin To Net: NetName=GND Pin=X2-50
+Added Pin To Net: NetName=GND Pin=X5-2
+Added Net: Name=GND
+Added Pin To Net: NetName=IN1 Pin=X1-44
+Added Net: Name=IN1
+Added Pin To Net: NetName=IN2 Pin=X1-45
+Added Net: Name=IN2
+Added Pin To Net: NetName=IN3 Pin=X1-46
+Added Net: Name=IN3
+Added Pin To Net: NetName=MISO Pin=X2-38
+Added Pin To Net: NetName=MISO Pin=X5-5
+Added Net: Name=MISO
+Added Pin To Net: NetName=MOSI Pin=X2-35
+Added Net: Name=MOSI
+Added Net: Name=NetA1_1
+Added Net: Name=NetA1_2
+Added Net: Name=NetC1_1
+Added Net: Name=NetC1_2
+Added Net: Name=NetC2_1
+Added Net: Name=nFAULT
+Added Pin To Net: NetName=nReset Pin=X1-15
+Added Net: Name=nReset
+Added Pin To Net: NetName=nSleep Pin=X1-16
+Added Net: Name=nSleep
+Added Net: Name=OUT1
+Added Net: Name=OUT2
+Added Net: Name=OUT3
+Added Pin To Net: NetName=SCLK Pin=X2-37
+Added Pin To Net: NetName=SCLK Pin=X5-4
+Added Net: Name=SCLK
+Added Net: Name=V3P3
+Added Class: Name=Sheet1
+Added Room: Name=Sheet1

@@ -1,0 +1,9 @@
+Change Component Comment : Designator=D2 Old Comment=* New Comment=DRV8313
+Change Component Comment : Designator=X1 Old Comment=* New Comment=STM32F4_Discovery_P1
+Change Component Comment : Designator=X2 Old Comment=* New Comment=STM32F4_Discovery_P2
+Change Component Comment : Designator=Motor1 Old Comment=Motor  New Comment=Motor
+Added Pin To Net: NetName=SCL Pin=X1-34
+Added Net: Name=SCL
+Added Pin To Net: NetName=SDA Pin=X1-35
+Added Net: Name=SDA
+Added Room: Name=Sheet1

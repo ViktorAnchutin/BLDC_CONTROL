@@ -1,0 +1,17 @@
+Change Physical Footprint: Designator=A1 Old Footprint=XL4050_PCB New Footprint=XL4050_PCB
+Change Physical Footprint: Designator=C1 Old Footprint=Ceramic 1206 - duplicate New Footprint=Ceramic 1206 - duplicate
+Change Physical Footprint: Designator=C2 Old Footprint=Ceramic 1206 - duplicate New Footprint=Ceramic 1206 - duplicate
+Change Physical Footprint: Designator=C3 Old Footprint=CAP 50-35 5õ11 New Footprint=CAP 50-35 5õ11
+Change Physical Footprint: Designator=C4 Old Footprint=CAP 50-35 5õ11 New Footprint=CAP 50-35 5õ11
+Change Physical Footprint: Designator=C7 Old Footprint=Ceramic 1206 - duplicate New Footprint=Ceramic 1206 - duplicate
+Change Physical Footprint: Designator=D2 Old Footprint=DRV8313 board New Footprint=DRV8313 board
+Change Physical Footprint: Designator=Motor1 Old Footprint=Fhase out New Footprint=Fhase out
+Change Physical Footprint: Designator=R1 Old Footprint=Resistor 1206 New Footprint=Resistor 1206
+Change Physical Footprint: Designator=X1 Old Footprint=STM32F4Discovery_P New Footprint=STM32F4Discovery_P
+Change Physical Footprint: Designator=X2 Old Footprint=STM32F4Discovery_P New Footprint=STM32F4Discovery_P
+Change Physical Footprint: Designator=X3 Old Footprint=Signal port New Footprint=Signal port
+Change Physical Footprint: Designator=X4 Old Footprint=Power input New Footprint=Power input
+Change Physical Footprint: Designator=X5 Old Footprint=AS5048A_input New Footprint=AS5048A_input
+Change Physical Footprint: Designator=X? Old Footprint=Potentiometr New Footprint=Potentiometr
+Change Physical Footprint: Designator=X? Old Footprint=LM2596S_PCB New Footprint=LM2596S_PCB
+Change Physical Footprint: Designator=X? Old Footprint=I2C input New Footprint=I2C input

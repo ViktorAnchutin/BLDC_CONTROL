@@ -1,0 +1,14 @@
+Change Component Comment : Designator=X? Old Comment=Potentiometr New Comment=*
+Added Component: Designator=C5(Ceramic 1206 - duplicate)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C6(Ceramic 1206 - duplicate)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=12V Pin=C5-1
+Added Pin To Net: NetName=GND Pin=C5-2
+Added Pin To Net: NetName=12V Pin=C6-1
+Added Pin To Net: NetName=GND Pin=C6-2
+Added Member To Class: ClassName=Sheet1 Member=Component C5 0.1uF
+Added Member To Class: ClassName=Sheet1 Member=Component C6 0.1uF
+Added Member To Class: ClassName=Sheet1 Member=Component X? *
+Added Member To Class: ClassName=Sheet1 Member=Component X? *
+Added Room: Name=Sheet1
