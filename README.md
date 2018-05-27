@@ -1,5 +1,5 @@
 #BLDC control
 
-look "Stabilized platform" repository
+look at "Stabilized platform" repository
 
 
