@@ -18,3 +18,7 @@ Essential elements:
 
 ### Electrical scheme ###
 ![Alt-текст](https://github.com/ViktorAnchutin/BLDC_CONTROL/blob/master/graph/El.JPG?raw=true "Electrical scheme")
+
+
+
+[![Watch the video](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](http://youtu.be/vt5fpE0bzSY)
