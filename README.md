@@ -1,5 +1,9 @@
 ## BLDC position control project ##
 
+### Youtube video ###
+
+[![Watch the video](https://img.youtube.com/vi/04u3CLnnJWE/0.jpg)](https://www.youtube.com/watch?v=04u3CLnnJWE)
+
 Three techniques have been implemented:
 
  - Position control with sinusoidal commutation -`sinus_control_V2`
@@ -20,6 +24,4 @@ Essential elements:
 ![Alt-текст](https://github.com/ViktorAnchutin/BLDC_CONTROL/blob/master/graph/El.JPG?raw=true "Electrical scheme")
 
 
-### Youtube video ###
 
-[![Watch the video](https://img.youtube.com/vi/04u3CLnnJWE/0.jpg)](https://www.youtube.com/watch?v=04u3CLnnJWE)
